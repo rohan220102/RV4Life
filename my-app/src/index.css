@@ -16,9 +16,9 @@ body {
 }
 
 #rvlife {
-    font-weight: 100;
-    padding-right: 8px;
-    margin-left: 40px;
+  font-weight: 100;
+  padding-right: 8px;
+  margin-left: 40px;
 }
 
 #planner {
@@ -32,12 +32,6 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: 28px;
-}
-  
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
 }
   
 /* Add a color to the active/current link */
