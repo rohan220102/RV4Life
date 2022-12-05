@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import Sidebar from './sidebar'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig';
 
@@ -21,7 +22,12 @@ export default function App() {
   });
 
   return (
-    <div>
+    <div className="App" id="app-container">
+      <div class="topnav">
+        <a class="active" href="#home" id="rvlife">RVLIFE</a>
+        <a class="active" href="#home" id="planner">PLANNER</a>
+      </div>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} />
       <div ref={mapContainer} className="map-container"/>
     </div>
   );
