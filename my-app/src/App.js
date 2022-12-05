@@ -3,8 +3,6 @@ import Sidebar from './sidebar'
 import Map from './map'
 
 export default function App() {
-  const map = Map();
-
   return (
     <div className="App" id={"app-container"}>
       <div className="topnav">
@@ -12,7 +10,7 @@ export default function App() {
         <a className="active" href="#home" id="planner">PLANNER</a>
       </div>
       <Sidebar pageWrapId={'page-wrap'} autofocus outerContainerId={'app-container'} />
-      <div ref={map} className="map-container" />
+      <Map/>
     </div>
   );
 }
