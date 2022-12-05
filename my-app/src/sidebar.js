@@ -13,7 +13,7 @@ export default props => {
         <input className="input" id="start-input" placeholder="Starting Location"></input>
       </div>
 
-      <div className="menu-item text-input">
+      <div className="menu-item text-input" tabIndex={"-1"}>
         <div id="icon">
           <img src={require("./media/pin1.png")} className="pin-icon" />
         </div>
@@ -22,7 +22,7 @@ export default props => {
 
       <button onClick={Search} className="menu-item" id="submit-btn">SEARCH</button>
 
-      <div className="menu-item">
+      <div className="menu-item results-container">
         <p id="results"></p>
       </div>
     </Menu>

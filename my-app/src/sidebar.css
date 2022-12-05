@@ -9,19 +9,13 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #ffffff;
+  background: white;
   max-height: 2px;
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
+  background-color: var(--darkred);
 }
 
 /*
@@ -37,6 +31,7 @@
 .bm-menu {
   background: white;
   color: black;
+  overflow-y: hidden !important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -46,8 +41,9 @@
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: red;
+  color: var(--red);
   padding: 0.8em;
+  
 }
 
 /* Individual item */
@@ -59,9 +55,9 @@
   transition: color 0.2s;
 }
 
-.bm-item:hover {
+/* .bm-item:hover {
   background: white;
-}
+} */
 
 
 /* User Input Fields */
@@ -69,13 +65,16 @@
   width: 91%;
   position: relative;
   margin-bottom: 5px;
+  border-color: white;
+  border-style: none;
+  
 }
 
 #icon {
   height: 1.5rem;
   width: 1.5rem;
   padding: 4px;
-  background: #f6f8f7;
+  background: var(--grey);
   position: absolute;
   box-sizing: border-box;
   top: 50%;
@@ -83,30 +82,43 @@
   transform: translateY(-50%);
 }
 
+.non-selectable {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
 .input {
   border-radius: 25px;
   height: 32px;
   width: 100%;
-  background: #f6f8f7;
+  background: var(--grey);
   border-width: 0;
   padding-left: 30px;
-  border-color: white;
-  border-style: none;
   font-size: 14px;
 }
 
 #submit-btn {
-  background-color: rgb(236, 26, 64);
+  background-color: var(--red);
   color: white;
   border-radius: 25px;
-  height: 34px;
+  height: 36px;
   text-align: center;
   width: 100%;
   font-weight: bold;
   border-width: 0;
-  border-color: white;
-  border-style: none;
   font-size: 14px;
+}
+
+#submit-btn:hover {
+  background-color: white;
+  color: var(--red);
+  cursor:pointer;
+  border-color: var(--red);
+  border-style: solid;
+  border-width: 2px;
 }
 
 .pin-icon {
@@ -116,4 +128,15 @@
 
 #results {
   color: black;
+  padding: 12px;
+}
+
+.results-container {
+  background-color: var(--grey);
+  border-radius: 14px;
+  height: 74%;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  font-size: 14px;
 }
