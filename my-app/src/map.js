@@ -20,7 +20,5 @@ export default function Map() {
     });
   });
 
-  return (
-    <div ref={mapContainer} className="map-container" />
-  );
+  return mapContainer;
 }
