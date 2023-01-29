@@ -1,21 +1,26 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
-  width: 21px;
-  height: 15px;
-  left: 18px;
-  top: 19px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: white;
-  max-height: 2px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 45%;
+  left: 0;
+  margin: 4px;
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
   background-color: var(--darkred);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  position: absolute;
+  min-height: 30px;
+  min-width: 30px;
+  top: 45% !important;
+  left: 100% !important;
+  margin: 4px;
 }
 
 /*
@@ -42,7 +47,7 @@
 /* Wrapper for item list */
 .bm-item-list {
   color: var(--red);
-  padding: 0.8em;
+  padding: 1em;
   
 }
 
@@ -59,15 +64,47 @@
   background: white;
 } */
 
+/************* Logo *************/
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+}
 
-/* User Input Fields */
+#rvlife {
+  font-weight: 100;
+  padding-right: 8px;
+  margin-left: 0px;
+}
+
+#planner {
+  font-weight: bold;
+}
+  
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: red;
+  text-align: left;
+  text-decoration: none;
+  font-size: 22px;
+}
+  
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: red;
+}
+
+/************* User Input Fields *************/
 .text-input {
   width: 91%;
   position: relative;
   margin-bottom: 5px;
   border-color: white;
   border-style: none;
-  
+  padding-top: 1em;
+  padding-bottom: 0.8em;
 }
 
 #icon {
@@ -77,13 +114,13 @@
   background: var(--grey);
   position: absolute;
   box-sizing: border-box;
-  top: 50%;
+  top: 52%;
   left: 6px;
   transform: translateY(-50%);
 }
 
 .input {
-  border-radius: 25px;
+  border-radius: 6px;
   height: 32px;
   width: 100%;
   background: var(--grey);

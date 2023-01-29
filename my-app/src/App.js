@@ -8,10 +8,6 @@ export default function App() {
   
   return (
     <div className="App" id={"app-container"}>
-      <div className="topnav">
-        <a className="active" href="#home" id="rvlife">RVLIFE</a>
-        <a className="active" href="#home" id="planner">PLANNER</a>
-      </div>
       <Sidebar pageWrapId={'page-wrap'} geojson={geojson} setGeojson={setGeojson} outerContainerId={'app-container'}/>
       <Map geojson={geojson} setGeojson={setGeojson}/>
     </div>
