@@ -1,4 +1,4 @@
-## RVLife Route Planner
+## RVLife Planner
 
 #### Description:
 
