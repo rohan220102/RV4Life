@@ -26,12 +26,8 @@ export default function Sidebar(props) {
     }
   };
 
-  var handleMenu = function(state) {
-    if (state.isOpen) return true;
-  };
-
   return (
-    <Menu id={"sidebar"} noOverlay isOpen={true} onStateChange={handleMenu}width={'25%'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
+    <Menu id={"sidebar"} noOverlay isOpen={true} width={'25%'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
       <div className="topnav">
         <a className="active" href="#home" id="rvlife">RVLIFE</a>
         <a className="active" href="#home" id="planner">PLANNER</a>
