@@ -1,0 +1,134 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 21px;
+  height: 15px;
+  left: 18px;
+  top: 19px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+  max-height: 2px;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background-color: var(--darkred);
+}
+
+/*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: white;
+  color: black;
+  overflow-y: hidden !important;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #ffffff;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: var(--red);
+  padding: 0.8em;
+  
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  outline: none;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* .bm-item:hover {
+  background: white;
+} */
+
+
+/* User Input Fields */
+.text-input {
+  width: 91%;
+  position: relative;
+  margin-bottom: 5px;
+  border-color: white;
+  border-style: none;
+  
+}
+
+#icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 4px;
+  background: var(--grey);
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}
+
+.input {
+  border-radius: 25px;
+  height: 32px;
+  width: 100%;
+  background: var(--grey);
+  border-width: 0;
+  padding-left: 30px;
+  font-size: 14px;
+}
+
+#submit-btn {
+  background-color: white;
+  color: var(--red);
+  border-color: var(--red);
+  border-style: solid;
+  border-width: 2px;
+  height: 36px;
+  width: 100%;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#submit-btn:hover {
+  background-color: var(--red);
+  color: white;
+  border-width: 0;
+  cursor:pointer;
+}
+
+.pin-icon {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#results {
+  color: black;
+  padding: 12px;
+}
+
+.results-container {
+  background-color: var(--grey);
+  border-radius: 14px;
+  height: 74%;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  font-size: 14px;
+}
