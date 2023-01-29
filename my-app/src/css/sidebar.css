@@ -139,13 +139,12 @@
   color: black;
   margin: 0;
   margin-left: 1em;
-  margin-bottom: 1em;
-  background-color: var(--grey);
 }
 
 
 #results-container {
-  background-color: red;
+  background-color: white;
+  padding-right: 0.5em;
 }
 
 .box {
@@ -166,5 +165,24 @@
 .content {
   border: none;
   overflow-y: auto;
-  /* height: 100%; */
+}
+
+.foot {
+  border: none;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--grey);
 }

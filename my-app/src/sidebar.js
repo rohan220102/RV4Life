@@ -49,6 +49,8 @@ export default function Sidebar(props) {
         <div className='content' id="results-container">
           <p id="results"></p>
         </div>
+
+        <div className='foot'/>
       </div>
     </Menu>
   );
