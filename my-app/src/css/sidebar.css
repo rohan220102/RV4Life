@@ -47,8 +47,6 @@
 /* Wrapper for item list */
 .bm-item-list {
   color: var(--red);
-  padding: 1em;
-  
 }
 
 /* Individual item */
@@ -97,25 +95,25 @@
 }
 
 /************* User Input Fields *************/
+#search-container {
+  padding: 1em;
+}
 .text-input {
   width: 91%;
   position: relative;
-  margin-bottom: 5px;
   border-color: white;
   border-style: none;
   padding-top: 1em;
-  padding-bottom: 0.8em;
 }
 
 #icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: 4px;
+  height: 1rem;
+  width: 1rem;
   background: var(--grey);
   position: absolute;
   box-sizing: border-box;
-  top: 52%;
-  left: 6px;
+  bottom: 0.08em;
+  left: 0.7em;
   transform: translateY(-50%);
 }
 
@@ -132,27 +130,6 @@
   outline-color: var(--grey);
 }
 
-#submit-btn {
-  background-color: white;
-  color: var(--red);
-  border-color: var(--red);
-  border-style: solid;
-  border-width: 2px;
-  height: 36px;
-  width: 100%;
-  border-radius: 25px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-#submit-btn:hover {
-  background-color: var(--red);
-  color: white;
-  border-width: 0;
-  cursor:pointer;
-}
-
 .pin-icon {
   max-height: 100%;
   max-width: 100%;
@@ -163,7 +140,7 @@
   padding: 12px;
 }
 
-.results-container {
+#results-container {
   background-color: var(--grey);
   border-radius: 14px;
   height: 74%;
