@@ -15,15 +15,6 @@ export default function Sidebar(props) {
         <input className="input" id="start-input" placeholder="Starting Location"></input>
       </div>
 
-      <div className="menu-item text-input" tabIndex={"-1"}>
-        <div id="icon">
-          <img src={require("./media/pin1.png")} className="pin-icon" />
-        </div>
-        <input className="input" id="end-input" placeholder="Destination"></input>
-      </div>
-
-      <button onClick={() => Search(props.setGeojson)} className="menu-item" id="submit-btn">SEARCH</button>
-
       <div className="menu-item results-container">
         <p id="results"></p>
       </div>
