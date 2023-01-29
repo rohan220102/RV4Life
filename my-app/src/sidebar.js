@@ -27,7 +27,7 @@ export default function Sidebar(props) {
   };
 
   return (
-    <Menu id={"sidebar"} noOverlay isOpen={true} width={'25%'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
+    <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
       <div className="topnav">
         <a className="active" href="#home" id="rvlife">RVLIFE</a>
         <a className="active" href="#home" id="planner">PLANNER</a>
