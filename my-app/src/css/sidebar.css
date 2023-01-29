@@ -127,6 +127,9 @@
   border-width: 0;
   padding-left: 30px;
   font-size: 14px;
+  font-weight: bold;
+  color: var(--darkgrey);
+  outline-color: var(--grey);
 }
 
 #submit-btn {

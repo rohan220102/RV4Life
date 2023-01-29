@@ -3,6 +3,11 @@
   --darkred: #a90000;
   --grey: #f1f2f6;
   --darkgrey: #a6a6a6;
+  --mediumgrey: #cacacb;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--mediumgrey);
 }
 
 body {
