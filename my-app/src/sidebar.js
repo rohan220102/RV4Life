@@ -1,6 +1,6 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import './sidebar.css'
+import './css/sidebar.css'
 import Search from './search'
 
 export default function Sidebar(props) {
