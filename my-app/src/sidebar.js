@@ -28,25 +28,27 @@ export default function Sidebar(props) {
 
   return (
     <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
-      <div id="search-container">
-        <div className="topnav">
-          <a className="active" href="#home" id="rvlife">RVLIFE</a>
-          <a className="active" href="#home" id="planner">PLANNER</a>
-        </div>
-
-        <ColoredLine color='var(--grey)'></ColoredLine>
-
-        <div className="text-input">
-          <div id="icon">
-            <img src={require("./media/pin1.png")} className="pin-icon" />
+      <div className='box'>
+        <div className='head' id="search-container">
+          <div className="topnav">
+            <a className="active" href="#home" id="rvlife">RVLIFE</a>
+            <a className="active" href="#home" id="planner">PLANNER</a>
           </div>
-          <input className="input" id="start-input" placeholder="Starting Location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
+
+          <ColoredLine color='var(--grey)'></ColoredLine>
+
+          <div className="text-input">
+            <div id="icon">
+              <img src={require("./media/pin1.png")} className="pin-icon" />
+            </div>
+            <input className="input" id="start-input" placeholder="Starting Location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
+          </div>
         </div>
-      </div>
-      
-      
-      <div id="results-container">
-        <p id="results"></p>
+        
+        
+        <div className='content' id="results-container">
+          <p id="results"></p>
+        </div>
       </div>
     </Menu>
   );

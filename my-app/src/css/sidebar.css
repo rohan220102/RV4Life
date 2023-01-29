@@ -51,7 +51,7 @@
 
 /* Individual item */
 .bm-item {
-  display: inline-block;
+  display: flex !important;
   outline: none;
   text-align: left;
   text-decoration: none;
@@ -137,15 +137,34 @@
 
 #results {
   color: black;
-  padding: 12px;
+  margin: 0;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  background-color: var(--grey);
 }
 
+
 #results-container {
-  background-color: var(--grey);
-  border-radius: 14px;
-  height: 74%;
-  text-align: center;
+  background-color: red;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  font-weight: bold;
-  font-size: 14px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.head {
+  border: none;
+  flex-shrink: 0;
+}
+
+.content {
+  border: none;
+  overflow-y: auto;
+  /* height: 100%; */
 }
