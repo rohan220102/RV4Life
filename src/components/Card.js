@@ -11,7 +11,7 @@ const Card = ({title, rating, detour, visited, temp, selected=false}) => {
       <header className='header'>
         <div className="title">
           <h4>{title}</h4>
-          <Rating givenRating={rating}/>
+          <Rating rating={rating}/>
         </div>
         {selected && (
           <Button className="btn" color={colors.primary} text="Add"/>
