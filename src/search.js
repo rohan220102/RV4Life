@@ -1,4 +1,4 @@
-import Card from './card';
+import Card from './components/Card';
 import getGeoson from './getGeoson';
 import getResults from './getResults';
       

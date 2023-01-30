@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import './css/sidebar.css'
-import Search from './search'
-import ColoredLine from './coloredLine';
-import Card from './card'
-import {ReactComponent as CloseMenuBtn} from './media/left_arrow.svg';
-import {ReactComponent as OpenMenuBtn} from './media/right_arrow.svg';
+import '../css/sidebar.css'
+import Search from '../search'
+import ColoredLine from './ColoredLine';
+import Card from './Card'
+import {ReactComponent as CloseMenuBtn} from '../media/left_arrow.svg';
+import {ReactComponent as OpenMenuBtn} from '../media/right_arrow.svg';
+import PinIcon from '../media/pin1.png';
 
 export default function Sidebar(props) {
   console.log("Rendering Sidebar");
@@ -41,7 +42,7 @@ export default function Sidebar(props) {
 
           <div className="text-input" tabIndex={-1}>
             <div id="icon" tabIndex={-1}>
-              <img src={require("./media/pin1.png")} tabIndex={-1} className="pin-icon" />
+              <img src={PinIcon} tabIndex={-1} className="pin-icon" />
             </div>
             <input tabIndex={0} autoFocus className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
           </div>
