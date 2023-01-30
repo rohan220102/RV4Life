@@ -12,14 +12,14 @@ export default class Map extends React.PureComponent {
       lng: -97.113020,
       lat: 32.633330,
       zoom: 4,
-      geojson: props.geojson,
+      data: props.data,
     };
     this.markers = [];
     this.mapContainer = React.createRef();
   }
 
   componentDidMount() {
-    const {lng, lat, zoom, geojson} = this.state;
+    const {lng, lat, zoom, data} = this.state;
     this.map = new mapboxgl.Map({
       container: this.mapContainer.current,
       style: 'mapbox://styles/mapbox/light-v11',
@@ -35,12 +35,12 @@ export default class Map extends React.PureComponent {
     this.markers = [];
   }
 
-  addMarkers(geojson) {
-    if (this.map==null || geojson==null) return;
+  addMarkers(data) {
+    if (this.map==null || data==null) return;
     console.log("Cleared markers");
     this.removeMarkers();
 
-    for (const feature of geojson.data) {      
+    for (const feature of data) {      
       // create a HTML element for each feature
       const el = document.createElement('div');
       el.className = 'marker';
@@ -60,9 +60,9 @@ export default class Map extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (JSON.stringify(nextProps.geojson) !== JSON.stringify(prevState.geojson)) {
-      console.log("Updating map.state['geojson']");
-      return ({geojson: nextProps.geojson}) // <- this is setState equivalent
+    if (JSON.stringify(nextProps.data) !== JSON.stringify(prevState.data)) {
+      console.log("Updating map.state['data']");
+      return ({geojson: nextProps.data}) // <- this is setState equivalent
     }
     return null
   }

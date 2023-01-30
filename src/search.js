@@ -2,7 +2,7 @@ import Card from './components/Card';
 import getGeoson from './getGeoson';
 import getResults from './getResults';
       
-export default function search(setGeojson, setResults) {
+export default function search({setGeojson, setResults}) {
   // const results = document.getElementById("results"); 
   const input = document.getElementById("start-input").value;
 
@@ -12,10 +12,8 @@ export default function search(setGeojson, setResults) {
   // console.log(str);
   // results.innerHTML = str;
 
-  const geojson = getGeoson();
   const results = getResults(input);
 
   // setting pinpoints on map;
-  setGeojson(geojson);
   setResults(results);
 };

@@ -10,7 +10,7 @@ import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
 import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
 
-export default function Sidebar(props) {
+export default function Sidebar({results, setResults}) {
   console.log("Rendering Sidebar");
 
   const [message, setMessage] = useState('');
@@ -24,7 +24,7 @@ export default function Sidebar(props) {
     if (event.key === 'Enter') {
       // 👇 Get input value
       setUpdated(message);
-      Search(props.setGeojson, props.setResults);
+      Search({setResults});
     }
   };
 
@@ -32,9 +32,9 @@ export default function Sidebar(props) {
     <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>} tabIndex={-1} disableAutoFocus>
       <div className='box' tabIndex={-1}>
         <div className='head' id="search-container" tabIndex={-1}>
-          <Header></Header>
-          <ColoredLine color='var(--grey)' tabIndex={-1}></ColoredLine>
-          <SearchBar icon={PinIcon} handleChange={handleChange} handleKeyDown={handleKeyDown}></SearchBar>
+          <Header/>
+          <ColoredLine color='var(--grey)' tabIndex={-1}/>
+          <SearchBar icon={PinIcon} handleChange={handleChange} handleKeyDown={handleKeyDown}/>
         </div>
         
         <div className='content' id="scroll-container" tabIndex={-1}>
@@ -42,7 +42,7 @@ export default function Sidebar(props) {
             {/* {props.results.map((r, index) => (
               <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
             ))} */}
-            <Results></Results>
+            <Results results={results}/>
           </div>
         </div>
 
