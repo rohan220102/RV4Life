@@ -45,7 +45,6 @@ export default function Sidebar(props) {
           </div>
         </div>
 
-        <div className='foot'/>
       </div>
     </Menu>
   );

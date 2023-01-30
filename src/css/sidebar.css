@@ -62,39 +62,7 @@
   background: white;
 } */
 
-/************* Logo *************/
-/* Add a black background color to the top navigation */
-.topnav {
-  background-color: white;
-  overflow: hidden;
-  padding-bottom: 0.8em;
-}
-
-#rvlife {
-  font-weight: bold;
-  padding-right: 8px;
-  margin-left: 0px;
-}
-
-#planner {
-  font-weight: 100;
-}
-  
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: red;
-  text-align: left;
-  text-decoration: none;
-  font-size: 22px;
-}
-  
-/* Add a color to the active/current link */
-.topnav a.active {
-  color: red;
-}
-
-/************* User Input Fields *************/
+/************* Containers *************/
 #search-container {
   padding: 1.4em;
 }
@@ -115,6 +83,7 @@
   padding-bottom: 1.3em;
 }
 
+/**************** Scrolling ***************/
 .box {
   position: absolute;
   top: 0;
@@ -133,11 +102,6 @@
 .content {
   border: none;
   overflow-y: overlay;
-}
-
-.foot {
-  border: none;
-  flex-shrink: 0;
 }
 
 ::-webkit-scrollbar {

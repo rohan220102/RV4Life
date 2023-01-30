@@ -1,0 +1,31 @@
+/************* Logo *************/
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  padding-bottom: 0.8em;
+}
+
+#rvlife {
+  font-weight: bold;
+  padding-right: 8px;
+  margin-left: 0px;
+}
+
+#planner {
+  font-weight: 100;
+}
+  
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: red;
+  text-align: left;
+  text-decoration: none;
+  font-size: 22px;
+}
+  
+/* Add a color to the active/current link */
+.topnav a.active {
+  color: red;
+}

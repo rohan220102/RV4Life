@@ -1,3 +1,5 @@
+import '../css/header.css';
+
 const Header = () => {
   return (
     <div className="topnav" tabIndex={-1}>
@@ -7,4 +9,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
