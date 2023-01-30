@@ -1,4 +1,4 @@
-import Results from './results';
+import Card from './card';
 import getResults from './getResults'
       
 export default function search(setGeojson) {
@@ -13,5 +13,6 @@ export default function search(setGeojson) {
 
   const geojson = getResults();
 
+  // setting pinpoints on map;
   setGeojson(geojson);
 };

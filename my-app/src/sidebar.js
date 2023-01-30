@@ -4,6 +4,7 @@ import { slide as Menu } from 'react-burger-menu';
 import './css/sidebar.css'
 import Search from './search'
 import ColoredLine from './coloredLine';
+import Card from './card'
 import {ReactComponent as CloseMenuBtn} from './media/left_arrow.svg';
 import {ReactComponent as OpenMenuBtn} from './media/right_arrow.svg';
 
@@ -41,13 +42,20 @@ export default function Sidebar(props) {
             <div id="icon">
               <img src={require("./media/pin1.png")} className="pin-icon" />
             </div>
-            <input className="input" id="start-input" placeholder="Starting Location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
+            <input className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
           </div>
         </div>
         
         
-        <div className='content' id="results-container">
-          <p id="results"></p>
+        <div className='content' id="scroll-container">
+          <div id="result-container">
+            <Card selected={true} title='RV Life' rating='4.8' detour='6 min.' visited='251' temp='64'></Card>
+            <Card title='Good Luck RV Park' rating='4.7' detour='15 min.' visited='158' temp='63'></Card>
+            <Card title='Lakeridge Campgrounds' rating='4.3' detour='21 min.' visited='103' temp='64'></Card>
+            <Card title='Bear Woods RV Park' rating='4.5' detour='26 min.' visited='88' temp='44'></Card>
+            <Card title='Waxahachie RV Parks and Campgrounds' rating='4.4' detour='31 min.' visited='41' temp='44'></Card>
+            <p id="results"></p>
+          </div>
         </div>
 
         <div className='foot'/>

@@ -71,13 +71,13 @@
 }
 
 #rvlife {
-  font-weight: 100;
+  font-weight: bold;
   padding-right: 8px;
   margin-left: 0px;
 }
 
 #planner {
-  font-weight: bold;
+  font-weight: 100;
 }
   
 /* Style the links inside the navigation bar */
@@ -96,10 +96,10 @@
 
 /************* User Input Fields *************/
 #search-container {
-  padding: 1em;
+  padding: 1.4em;
 }
 .text-input {
-  width: 91%;
+  width: 90.5%;
   position: relative;
   border-color: white;
   border-style: none;
@@ -118,13 +118,13 @@
 }
 
 .input {
-  border-radius: 6px;
+  border-radius: 4px;
   height: 32px;
   width: 100%;
   background: var(--grey);
   border-width: 0;
   padding-left: 30px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color: var(--darkgrey);
   outline-color: var(--grey);
@@ -138,13 +138,17 @@
 #results {
   color: black;
   margin: 0;
-  margin-left: 1em;
 }
 
-
-#results-container {
+#scroll-container {
   background-color: white;
-  padding-right: 0.5em;
+}
+
+#result-container {
+  margin: 0;
+  margin-left: 1.4em;
+  margin-right: 1.4em;
+  padding-bottom: 1.3em;
 }
 
 .box {
@@ -164,12 +168,11 @@
 
 .content {
   border: none;
-  overflow-y: auto;
+  overflow-y: overlay;
 }
 
 .foot {
   border: none;
-  height: 1em;
   flex-shrink: 0;
 }
 
