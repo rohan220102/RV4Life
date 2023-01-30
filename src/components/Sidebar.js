@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import '../css/sidebar.css'
 import Header from './Header';
+import SearchBar from './SearchBar';
 import Search from '../search'
 import ColoredLine from './ColoredLine';
 import Card from './Card'
@@ -32,17 +33,9 @@ export default function Sidebar(props) {
       <div className='box' tabIndex={-1}>
         <div className='head' id="search-container" tabIndex={-1}>
           <Header></Header>
-
           <ColoredLine color='var(--grey)' tabIndex={-1}></ColoredLine>
-
-          <div className="text-input" tabIndex={-1}>
-            <img src={PinIcon} tabIndex={-1} id="icon"/>
-            <input 
-              tabIndex={0} autoFocus className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}>
-            </input>
-          </div>
+          <SearchBar icon={PinIcon} handleChange={handleChange} handleKeyDown={handleKeyDown}></SearchBar>
         </div>
-        
         
         <div className='content' id="scroll-container" tabIndex={-1}>
           <div id="result-container">

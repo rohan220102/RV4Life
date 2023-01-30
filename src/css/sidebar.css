@@ -98,37 +98,6 @@
 #search-container {
   padding: 1.4em;
 }
-.text-input {
-  width: 90.5%;
-  position: relative;
-  border-color: white;
-  border-style: none;
-  padding-top: 1em;
-}
-
-#icon {
-  height: 1rem;
-  width: 0.8rem;
-  background: var(--grey);
-  position: absolute;
-  box-sizing: border-box;
-  bottom: 0.08em;
-  left: 0.6em;
-  transform: translateY(-50%);
-}
-
-.input {
-  border-radius: 4px;
-  height: 32px;
-  width: 100%;
-  background: var(--grey);
-  border-width: 0;
-  padding-left: 30px;
-  font-size: 13px;
-  font-weight: bold;
-  color: var(--darkgrey);
-  outline-color: var(--grey);
-}
 
 #results {
   color: black;
