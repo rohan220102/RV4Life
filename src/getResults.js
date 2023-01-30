@@ -33,7 +33,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Lakeridge Campgrounds and RV Park',
-        coordinates: [-122.414, 37.776],
+        coordinates: [-102.414, 27.776],
         description: 'San Francisco, California',
         selected: true,
         rating: '3.7',
@@ -43,7 +43,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Bear Woods Campgrounds',
-        coordinates: [-97.113020, 32.733330],
+        coordinates: [97.113020, 22.933330],
         description: 'San Francisco, California',
         selected: false,
         rating: '4.6',
@@ -53,7 +53,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Good Luck RV Park',
-        coordinates: [-77.032, 38.913],
+        coordinates: [-47.032, 30.913],
         description: 'Washington, D.C.',
         selected: false,
         rating: '3.5',
@@ -63,7 +63,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Lakeridge Campgrounds and RV Park',
-        coordinates: [-122.414, 37.776],
+        coordinates: [-102.414, 57.776],
         description: 'San Francisco, California',
         selected: true,
         rating: '3.4',
@@ -73,7 +73,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Bear Woods Campgrounds',
-        coordinates: [-97.113020, 32.733330],
+        coordinates: [-107.113020, 12.733330],
         description: 'San Francisco, California',
         selected: false,
         rating: '3.3',
@@ -83,7 +83,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Good Luck RV Park',
-        coordinates: [-77.032, 38.913],
+        coordinates: [-73.032, -45.913],
         description: 'Washington, D.C.',
         selected: false,
         rating: '3.2',
@@ -93,7 +93,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Lakeridge Campgrounds and RV Park',
-        coordinates: [-122.414, 37.776],
+        coordinates: [-122.414, 30.776],
         description: 'San Francisco, California',
         selected: true,
         rating: '3.1',
@@ -103,7 +103,7 @@ const getResults = ({input}) => {
       },
       {
         title: 'Bear Woods Campgrounds',
-        coordinates: [-97.113020, 32.733330],
+        coordinates: [-67.113020, 52.733330],
         description: 'San Francisco, California',
         selected: false,
         rating: '3.0',
