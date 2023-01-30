@@ -13,7 +13,8 @@ export default function Sidebar(props) {
 
   const [message, setMessage] = useState('');
   const [updated, setUpdated] = useState('');
-  const [menuBtn, setMenuBtn] = useState("400px")
+
+  
 
   const handleChange = (event) => {
     setMessage(event.target.value);
@@ -23,38 +24,35 @@ export default function Sidebar(props) {
     if (event.key === 'Enter') {
       // 👇 Get input value
       setUpdated(message);
-      Search(props.setGeojson)
+      Search(props.setGeojson, props.setResults);
     }
   };
 
   return (
-    <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>}>
-      <div className='box'>
-        <div className='head' id="search-container">
-          <div className="topnav">
-            <a className="active" href="#home" id="rvlife">RVLIFE</a>
-            <a className="active" href="#home" id="planner">PLANNER</a>
+    <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>} tabIndex={-1} disableAutoFocus>
+      <div className='box' tabIndex={-1}>
+        <div className='head' id="search-container" tabIndex={-1}>
+          <div className="topnav" tabIndex={-1}>
+            <a className="active" href="#home" id="rvlife" tabIndex={-1}>RVLIFE</a>
+            <a className="active" href="#home" id="planner" tabIndex={-1}>PLANNER</a>
           </div>
 
-          <ColoredLine color='var(--grey)'></ColoredLine>
+          <ColoredLine color='var(--grey)' tabIndex={-1}></ColoredLine>
 
-          <div className="text-input">
-            <div id="icon">
-              <img src={require("./media/pin1.png")} className="pin-icon" />
+          <div className="text-input" tabIndex={-1}>
+            <div id="icon" tabIndex={-1}>
+              <img src={require("./media/pin1.png")} tabIndex={-1} className="pin-icon" />
             </div>
-            <input className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
+            <input tabIndex={0} autoFocus className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
           </div>
         </div>
         
         
-        <div className='content' id="scroll-container">
+        <div className='content' id="scroll-container" tabIndex={-1}>
           <div id="result-container">
-            <Card selected={true} title='RV Life' rating='4.8' detour='6 min.' visited='251' temp='64'></Card>
-            <Card title='Good Luck RV Park' rating='4.7' detour='15 min.' visited='158' temp='63'></Card>
-            <Card title='Lakeridge Campgrounds' rating='4.3' detour='21 min.' visited='103' temp='64'></Card>
-            <Card title='Bear Woods RV Park' rating='4.5' detour='26 min.' visited='88' temp='44'></Card>
-            <Card title='Waxahachie RV Parks and Campgrounds' rating='4.4' detour='31 min.' visited='41' temp='44'></Card>
-            <p id="results"></p>
+            {props.results.map((r, index) => (
+              <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
+            ))}
           </div>
         </div>
 

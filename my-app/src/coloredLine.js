@@ -1,6 +1,6 @@
 export default function ColoredLine({color}) {
   return (
-  <hr
+  <hr tabIndex={-1}
       style={{
           color: color,
           backgroundColor: color,
