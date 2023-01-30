@@ -36,10 +36,10 @@ export default function Sidebar(props) {
           <ColoredLine color='var(--grey)' tabIndex={-1}></ColoredLine>
 
           <div className="text-input" tabIndex={-1}>
-            <div id="icon" tabIndex={-1}>
-              <img src={PinIcon} tabIndex={-1} className="pin-icon" />
-            </div>
-            <input tabIndex={0} autoFocus className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}></input>
+            <img src={PinIcon} tabIndex={-1} id="icon"/>
+            <input 
+              tabIndex={0} autoFocus className="input" id="start-input" placeholder="Enter a starting location" onChange={handleChange} onKeyDown={handleKeyDown}>
+            </input>
           </div>
         </div>
         
