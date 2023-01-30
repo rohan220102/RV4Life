@@ -7,9 +7,13 @@ export default function App() {
 
   console.log("Rendering Application");
   
+  const selectCard = (id) => {
+    console.log(id);
+  } 
+
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar pageWrapId={'page-wrap'} results={results} setResults={setResults} outerContainerId={'app-container'}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard}/>
       <Map data={results} setData={setResults}/>
     </div>
   );

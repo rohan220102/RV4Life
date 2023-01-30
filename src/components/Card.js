@@ -5,9 +5,9 @@ import colors from '../colors.js'
 import PropTypes from 'prop-types'
 import Rating from './Rating.js'
 
-const Card = ({title, rating, detour, visited, temp, selected=false}) => {
+const Card = ({title, rating, detour, visited, temp, id, selected=false, onSelect}) => {
   return (
-    <div className={isSelected(selected)} tabIndex={-1}>
+    <div className={isSelected(selected)} onClick={() => onSelect(id)} tabIndex={-1}>
       <header className='header'>
         <div className="title">
           <h4>{title}</h4>

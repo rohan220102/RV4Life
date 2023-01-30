@@ -24,8 +24,7 @@ p {
   margin: 0;
 }
 
-/******* Experimenting *******/
-
+/******* Title, button, and rating *******/
 .header {
   display: flex;
   flex-direction: row;
@@ -44,4 +43,9 @@ p {
 .btn {
   flex: 1 1 auto; 
   margin-left: 1em;
+}
+
+/******* Selected ********/
+.card-container.selected {
+  border-left: 4px solid var(--red);
 }

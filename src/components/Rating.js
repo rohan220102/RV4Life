@@ -30,7 +30,6 @@ const createStar = (rating, index) => {
     return <FaRegStar key={index} className="star" color={
       colors.primary}/>
   } else if (dec < 0.8) {
-    console.log(rating, index, dec);
     return <FaStarHalfAlt key={index} className="star" color={
       colors.primary}/>
   } else {
