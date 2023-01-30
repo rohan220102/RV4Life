@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Sidebar from './sidebar'
-import Map from './map'
+import Sidebar from './components/Sidebar'
+import Map from './components/Map'
 
 export default function App() {
   const [geojson, setGeojson] = useState(null);
