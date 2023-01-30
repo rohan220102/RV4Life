@@ -1,12 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import '../css/sidebar.css'
+import Header from './Header';
 import Search from '../search'
 import ColoredLine from './ColoredLine';
 import Card from './Card'
-import {ReactComponent as CloseMenuBtn} from '../media/left_arrow.svg';
-import {ReactComponent as OpenMenuBtn} from '../media/right_arrow.svg';
+import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
+import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
 
 export default function Sidebar(props) {
@@ -14,9 +14,7 @@ export default function Sidebar(props) {
 
   const [message, setMessage] = useState('');
   const [updated, setUpdated] = useState('');
-
   
-
   const handleChange = (event) => {
     setMessage(event.target.value);
   };
@@ -33,10 +31,7 @@ export default function Sidebar(props) {
     <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>} tabIndex={-1} disableAutoFocus>
       <div className='box' tabIndex={-1}>
         <div className='head' id="search-container" tabIndex={-1}>
-          <div className="topnav" tabIndex={-1}>
-            <a className="active" href="#home" id="rvlife" tabIndex={-1}>RVLIFE</a>
-            <a className="active" href="#home" id="planner" tabIndex={-1}>PLANNER</a>
-          </div>
+          <Header></Header>
 
           <ColoredLine color='var(--grey)' tabIndex={-1}></ColoredLine>
 
