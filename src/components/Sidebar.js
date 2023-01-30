@@ -5,7 +5,7 @@ import Header from './Header';
 import SearchBar from './SearchBar';
 import Search from '../search'
 import ColoredLine from './ColoredLine';
-import Card from './Card'
+import Results from './Results.js';
 import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
 import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
@@ -39,9 +39,10 @@ export default function Sidebar(props) {
         
         <div className='content' id="scroll-container" tabIndex={-1}>
           <div id="result-container" tabIndex={-1}>
-            {props.results.map((r, index) => (
+            {/* {props.results.map((r, index) => (
               <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
-            ))}
+            ))} */}
+            <Results></Results>
           </div>
         </div>
 

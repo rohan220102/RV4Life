@@ -4,42 +4,6 @@ import '../css/card.css';
 import colors from '../colors.js';
 import PropTypes from 'prop-types';
 
-
-export class Card1 extends Component {
-  state = {
-    selected: this.props.selected
-  };
-
-  isSelected = (selected) => {
-    var className = 'card-container';
-    if (selected) {
-      className += ' selected';
-    }
-    return className;
-  };
-
-  render() {
-    const {title, rating, detour, visited, temp, selected} = this.props;
-    return (
-      <div className={this.isSelected(this.state.selected)}>
-        <h4>{title}</h4>
-        <p>{rating}</p>
-        <p>{detour}</p>
-        <p>{visited}</p>
-        <p>{temp}</p>
-      </div>
-    )
-  }
-}
-
-const isSelected = (selected) => {
-  var className = 'card-container';
-  if (selected) {
-    className += ' selected';
-  }
-  return className;
-};
-
 const Card = ({title, rating, detour, visited, temp, selected=false}) => {
   return (
     <div className={isSelected(selected)} tabIndex={-1}>
@@ -51,6 +15,8 @@ const Card = ({title, rating, detour, visited, temp, selected=false}) => {
   )
 }
 
+export default Card;
+
 Card.defaultProps = {
   title: 'Task Tracker',
 }
@@ -59,10 +25,16 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
+const isSelected = (selected) => {
+  var className = 'card-container';
+  if (selected) {
+    className += ' selected';
+  }
+  return className;
+};
+
 // CSS in JS
 // const headingStyle = {
 //   color: 'red',
 //   backgroundColor: 'black',
 // }
-
-export default Card;

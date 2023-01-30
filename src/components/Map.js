@@ -40,18 +40,18 @@ export default class Map extends React.PureComponent {
     console.log("Cleared markers");
     this.removeMarkers();
 
-    for (const feature of geojson.features) {      
+    for (const feature of geojson.data) {      
       // create a HTML element for each feature
       const el = document.createElement('div');
       el.className = 'marker';
 
       // make a marker for each feature and add to the map
       this.markers.push(new mapboxgl.Marker({color: 'var(--red)'})
-        .setLngLat(feature.geometry.coordinates)
+        .setLngLat(feature.coordinates)
         .setPopup(
         new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+        `<h3>${feature.title}</h3><p>${feature.description}</p>`
         )
         )
         .addTo(this.map));
