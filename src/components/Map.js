@@ -73,9 +73,9 @@ export default class Map extends React.PureComponent {
     this.addMarkers(this.state['geojson']);
 
     return (
-      <div>
+      <React.Fragment>
         <div ref={this.mapContainer} className="map-container" />
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -38,7 +38,7 @@ export default function Sidebar(props) {
         </div>
         
         <div className='content' id="scroll-container" tabIndex={-1}>
-          <div id="result-container">
+          <div id="result-container" tabIndex={-1}>
             {props.results.map((r, index) => (
               <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
             ))}

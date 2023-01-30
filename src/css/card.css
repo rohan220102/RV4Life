@@ -23,3 +23,25 @@ p {
   color: var(--darkgrey);
   margin: 0;
 }
+
+/******* Experimenting *******/
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.title {
+  flex: 1 1 auto;
+  width: 75%;
+}
+
+.btn {
+  flex: 1 1 auto; 
+  margin-left: 1em;
+}
