@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import '../css/button.css'
+import { FaPlusCircle } from 'react-icons/fa'
 
 const Button = ({color, text, onClick}) => {
   return (
