@@ -1,6 +1,6 @@
 .card-container {
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
   border-style: solid;
   border-width: 2px;
   border-color: var(--grey);
@@ -31,9 +31,9 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
   flex-wrap: wrap;
   align-items: flex-start;
+  margin-bottom: 0.5em;
 }
 
 .title {

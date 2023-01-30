@@ -8,9 +8,17 @@ const Card = ({title, rating, detour, visited, temp, selected=false}) => {
   return (
     <div className={isSelected(selected)} tabIndex={-1}>
       <header className='header'>
-        <h4 className="title">{title}</h4>
-        {selected && (<Button className="btn" color={colors.primary} text="Add"/>)}
+        <div className="title">
+          <h4>{title}</h4>
+          <p style={{fontWeight: "bold", color: colors.primary}}>{rating}</p>
+        </div>
+        {selected && (
+          <Button className="btn" color={colors.primary} text="Add"/>
+        )}
       </header>
+      <p>{detour}</p>
+      <p>{visited}</p>
+
     </div>
   )
 }

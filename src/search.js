@@ -1,5 +1,3 @@
-import Card from './components/Card';
-import getGeoson from './getGeoson';
 import getResults from './getResults';
       
 export default function search({setGeojson, setResults}) {
