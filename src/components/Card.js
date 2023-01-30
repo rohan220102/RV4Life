@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import Button from './Button.js';
-import '../css/card.css';
-import colors from '../colors.js';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react'
+import Button from './Button.js'
+import '../css/card.css'
+import colors from '../colors.js'
+import PropTypes from 'prop-types'
+import Rating from './Rating.js'
 
 const Card = ({title, rating, detour, visited, temp, selected=false}) => {
   return (
@@ -10,7 +11,7 @@ const Card = ({title, rating, detour, visited, temp, selected=false}) => {
       <header className='header'>
         <div className="title">
           <h4>{title}</h4>
-          <p style={{fontWeight: "bold", color: colors.primary}}>{rating}</p>
+          <Rating givenRating={rating}/>
         </div>
         {selected && (
           <Button className="btn" color={colors.primary} text="Add"/>
