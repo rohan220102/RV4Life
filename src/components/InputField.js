@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import '../css/InputField.css'
+import "../css/InputField.css";
 
 const useInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -24,32 +24,34 @@ const useInput = (initialValue) => {
     onChange: handleChange,
     setValue,
     suggestions,
-    setSuggestions
+    setSuggestions,
   };
 };
 
-const InputField = ({icon, placeholder, onChange, onKeyDown, id}) => {
+const InputField = ({ icon, placeholder, onChange, onKeyDown, id }) => {
   const input = useInput("");
-  const [focused, setFocused] = useState(false)
-  const onFocus = () => setFocused(true)
-  const onBlur = () => setFocused(false)
+  const [focused, setFocused] = useState(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
 
   return (
     <Wrapper>
-      <Icon src={icon} focused={focused} tabIndex={-1} id="icon"/>
+      <Icon src={icon} focused={focused} tabIndex={-1} id="icon" />
       <Input
         onFocus={onFocus}
         onBlur={onBlur}
         focused={focused}
         showSuggestions={input.suggestions?.length > 0}
-        id={id} className="input"
-        onChange={onChange} onKeyDown={onKeyDown}
+        id={id}
+        className="input"
+        onChange={onChange}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
         {...input}
         isTyping={input.value !== ""}
       />
 
-      {(input.suggestions?.length > 0)  && (
+      {input.suggestions?.length > 0 && (
         <SuggestionWrapper>
           {input.suggestions.map((suggestion, index) => {
             return (
@@ -74,20 +76,19 @@ const InputField = ({icon, placeholder, onChange, onKeyDown, id}) => {
 export default InputField;
 
 const Wrapper = styled.div`
-  margin-top: 1em;
   width: 100%;
   padding: 0;
-`
+`;
 
 const Icon = styled.img`
   height: 1rem;
   width: 0.8rem;
-  background: ${(props) => props.focused ? "white" : "var(--grey)"};
-  position: absolute;
+  background: ${(props) => (props.focused ? "white" : "var(--grey)")};
+  position: relative;
   box-sizing: border-box;
-  top: 5.73em;
-  left: 2em;
-  z-index:100;
+  top: 2.22em;
+  left: 0.67em;
+  z-index: 100;
   transform: translateY(-50%);
 `;
 
@@ -108,21 +109,26 @@ const Input = styled.input`
   color: var(--darkgrey);
   display: grid;
   justify-self: center;
-  border-color: blue; 
+  border-color: blue;
   outline: 2px solid var(--grey);
   border-style: solid;
-  border-radius: ${(props) => props.isTyping && props.focused && props.showSuggestions && "4px 4px 0px 0px"};
+  border-radius: ${(props) =>
+    props.isTyping &&
+    props.focused &&
+    props.showSuggestions &&
+    "4px 4px 0px 0px"};
 `;
 
 const SuggestionWrapper = styled.div`
   background: white;
   position: absolute;
-  width: 88%;
+  width: 91.5%;
   box-sizing: border-box;
   padding: 15px 20px;
   border-radius: 0px 0px 10px 10px;
   z-index: 100;
-  box-shadow: inset -2px 0 0 var(--grey), inset 0 -2px 0 var(--grey), inset 2px 0 0 var(--grey), inset 0 2px 0 var(--grey);
+  box-shadow: inset -2px 0 0 var(--grey), inset 0 -2px 0 var(--grey),
+    inset 2px 0 0 var(--grey), inset 0 2px 0 var(--grey);
 `;
 
 const Suggestion = styled.p`

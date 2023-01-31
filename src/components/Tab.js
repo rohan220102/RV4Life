@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 export default function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -14,7 +14,7 @@ export default function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{paddingTop: 1, paddingLeft: 3, paddingRight: 3}}>
+        <Box>
           <>{children}</>
         </Box>
       )}

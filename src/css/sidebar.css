@@ -64,7 +64,7 @@
 
 /************* Containers *************/
 #search-container {
-  padding: 1.4em;
+  padding: 1em 1em 0em 1em;
 }
 
 #results {
@@ -78,7 +78,7 @@
 
 #result-container {
   margin: 0;
-  padding-bottom: 1.3em;
+  padding: 0.5em 1em 0.5em 1em;
 }
 
 /**************** Scrolling ***************/
@@ -103,7 +103,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0.5em;
+  width: 0.3em;
 }
 
 ::-webkit-scrollbar-track {
@@ -113,10 +113,11 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: var(--grey);
+  background-color: var(--red);
 }
 
 /****** Tab ******/
 .MuiBox-root {
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
