@@ -9,6 +9,19 @@ import Results from './Results.js';
 import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
 import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import TabPanel from './Tab.js'
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import colors from '../colors.js'
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 export default function Sidebar({results, setResults, onSelect, onAdd}) {
   console.log("Rendering sidebar");
@@ -28,6 +41,12 @@ export default function Sidebar({results, setResults, onSelect, onAdd}) {
     }
   };
 
+  /***** Tabs *****/
+  const [tab, setTab] = React.useState(0);
+  const handleTabChange = (event, newTab) => {
+    setTab(newTab);
+  };
+
   return (
     <Menu id={"sidebar"} noOverlay isOpen={true} width={'23em'} customBurgerIcon={<OpenMenuBtn/>} customCrossIcon={<CloseMenuBtn/>} tabIndex={-1} disableAutoFocus>
       <div className='box' tabIndex={-1}>
@@ -36,14 +55,30 @@ export default function Sidebar({results, setResults, onSelect, onAdd}) {
           <ColoredLine color='var(--grey)' tabIndex={-1}/>
           <SearchBar icon={PinIcon} handleChange={handleChange} handleKeyDown={handleKeyDown}/>
         </div>
+
         
         <div className='content' id="scroll-container" tabIndex={-1}>
-          <div id="result-container" tabIndex={-1}>
-            {/* {props.results.map((r, index) => (
-              <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
-            ))} */}
-            <Results results={results} onSelect={onSelect} onAdd={onAdd}/>
-          </div>
+          <Box sx={{width: '100%'}}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+              <Tabs
+                centered
+                value={tab} 
+                onChange={handleTabChange}
+                aria-label='suggestions and current trip tabs'
+              >
+                <Tab label="Next Stops" {...a11yProps(0)} />
+                <Tab label="Current Trip" {...a11yProps(1)} />
+              </Tabs>
+            </Box>
+              <TabPanel value={tab} index={0}>
+                <div id="result-container" tabIndex={-1}>
+                <Results results={results} onSelect={onSelect} onAdd={onAdd}/>
+                </div>
+              </TabPanel>
+              <TabPanel value={tab} index={1}>
+                Item Two
+              </TabPanel>
+            </Box>
         </div>
 
       </div>

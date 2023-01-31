@@ -78,8 +78,6 @@
 
 #result-container {
   margin: 0;
-  margin-left: 1.4em;
-  margin-right: 1.4em;
   padding-bottom: 1.3em;
 }
 
@@ -116,4 +114,9 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: var(--grey);
+}
+
+/****** Tab ******/
+.MuiBox-root {
+  padding: 0;
 }
