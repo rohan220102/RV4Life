@@ -10,7 +10,7 @@ import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
 import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
 
-export default function Sidebar({results, setResults, onSelect}) {
+export default function Sidebar({results, setResults, onSelect, addMarkers}) {
   console.log("Rendering Sidebar");
 
   const [message, setMessage] = useState('');
@@ -24,7 +24,7 @@ export default function Sidebar({results, setResults, onSelect}) {
     if (event.key === 'Enter') {
       // 👇 Get input value
       setUpdated(message);
-      Search({setResults});
+      Search({setResults, addMarkers});
     }
   };
 

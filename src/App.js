@@ -3,6 +3,7 @@ import Sidebar from './components/Sidebar'
 import Map from './components/Map'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import './css/map.css'
+import colors from './colors.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig';
 
@@ -18,22 +19,25 @@ export default function App() {
         {...result, selected: false}
       )
     );
+    addMarkers(results);
   }; 
 
   /*********************** MapBox ***********************/
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
+  const [lng, setLng] = useState(-97.113020);
+  const [lat, setLat] = useState(32.633330);
   const [zoom, setZoom] = useState(9);
+  const [markers, setMarkers] = useState([]);
   
   useEffect(() => {
     if (map.current) return; // initialize map only once
+    console.log("Creating map");
     map.current = new mapboxgl.Map({
-    container: mapContainer.current,
-    style: 'mapbox://styles/mapbox/streets-v12',
-    center: [lng, lat],
-    zoom: zoom
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/navigation-day-v1',
+      center: [lng, lat],
+      zoom: zoom
     });
   });
   
@@ -46,11 +50,37 @@ export default function App() {
     });
   });
  
+  const addMarkers = (results) => {
+    for (const marker of markers) {
+      marker.remove();
+    }
+  
+    const newMarkers = [];
+  
+    for (const res of results) {      
+      // create a HTML element for each object
+      const el = document.createElement('div');
+      el.className = 'marker';
+  
+      // make a marker for each object and add to the map
+      newMarkers.push(new mapboxgl.Marker({color: 
+        res.selected ? colors.primary : colors.secondary
+      }).setLngLat(res.coordinates).setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+        .setHTML(`<h3>${res.title}</h3><p>${res.description}</p>`)
+      ).addTo(map.current));
+    }
+  
+    setMarkers(newMarkers);
+  }
+
+  console.log("Added markers");
+
   /*******************************************************/
 
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard} addMarkers={addMarkers}/>
       {/* <Map data={results} setData={setResults}/> */}  
       <div ref={mapContainer} className="map-container" />
     </div>
