@@ -45,8 +45,6 @@ export default function App() {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
-    console.log("USing effect");
-
     });
   });
 
@@ -58,22 +56,27 @@ export default function App() {
   const addMarkers = (results) => {
     for (const marker of markers) marker.remove();
     const newMarkers = [];
-  
+
     for (const res of results) {      
-      // create a HTML element for each object
-      const el = document.createElement('div');
-      el.className = 'marker';
-  
-      console.log(res.selected);
-      // make a marker for each object and add to the map
+      // create new marker and add to map
       newMarkers.push(new mapboxgl.Marker({color: 
         res.selected ? colors.primary : colors.secondary
       }).setLngLat(res.coordinates).setPopup(
         new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(`<h3>${res.title}</h3><p>${res.description}</p>`)
       ).addTo(map.current));
+
+      // create HTML id for each marker
+      const newId = "marker" + res.id;
+      newMarkers[newMarkers.length-1].getElement().id = newId;
+
+      // add click event to highlight corresponding Card element
+      document.getElementById(newId).addEventListener('click', (e) => {
+        const id = e.currentTarget.id.substring(6);
+        selectCard(id);
+      });
     }
-    setMarkers(newMarkers);
+    setMarkers(newMarkers); // update markers state
   }
 
   console.log("Added markers");
