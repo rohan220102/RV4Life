@@ -10,7 +10,7 @@ import { ReactComponent as CloseMenuBtn } from '../media/left_arrow.svg';
 import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
 
-export default function Sidebar({results, setResults, onSelect}) {
+export default function Sidebar({results, setResults, onSelect, onAdd}) {
   console.log("Rendering Sidebar");
 
   const [message, setMessage] = useState('');
@@ -42,7 +42,7 @@ export default function Sidebar({results, setResults, onSelect}) {
             {/* {props.results.map((r, index) => (
               <Card key={index} selected={r.selected} title={r.title} rating={r.rating} detour={r.detour} visited={r.visited} temp={r.temp}></Card>
             ))} */}
-            <Results results={results} onSelect={onSelect}/>
+            <Results results={results} onSelect={onSelect} onAdd={onAdd}/>
           </div>
         </div>
 

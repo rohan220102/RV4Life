@@ -13,12 +13,20 @@ export default function App() {
   console.log("Rendering Application");
   
   const selectCard = (id) => {
+    console.log("Selected")
     setResults(
       results.map((result) =>
         result.id == id ? {...result, selected: true} :
         {...result, selected: false}
       ));
   }; 
+
+  const addToTrip = (e, id) => {
+    e.stopPropagation(); // prevent selectCard() from calling
+    setResults(
+      results.filter((result) => result.id == id));
+    console.log("Added card #" + id);
+  };
 
   /*********************** MapBox ***********************/
   const mapContainer = useRef(null);
@@ -50,6 +58,7 @@ export default function App() {
 
   useEffect(() => {
     addMarkers(results);
+    console.log(results);
     console.log('Updated markers');
   }, [results]);
  
@@ -85,7 +94,7 @@ export default function App() {
 
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard} onAdd={addToTrip}/>
       {/* <Map data={results} setData={setResults}/> */}  
       <div ref={mapContainer} className="map-container" />
     </div>
