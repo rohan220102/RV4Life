@@ -48,7 +48,7 @@ const getResults = ({input}) => {
       {
         id: 4,
         title: 'Bear Woods Campgrounds',
-        coordinates: [97.113020, 22.933330],
+        coordinates: [-97.113020, 22.933330],
         description: 'San Francisco, California',
         selected: false,
         rating: '4.6',
@@ -59,7 +59,7 @@ const getResults = ({input}) => {
       {
         id: 5,
         title: 'Good Luck RV Park',
-        coordinates: [-47.032, 30.913],
+        coordinates: [-107.032, 40.913],
         description: 'Washington, D.C.',
         selected: false,
         rating: '3.5',
@@ -81,7 +81,7 @@ const getResults = ({input}) => {
       {
         id: 7,
         title: 'Bear Woods Campgrounds',
-        coordinates: [-107.113020, 12.733330],
+        coordinates: [-107.113020, 32.733330],
         description: 'San Francisco, California',
         selected: false,
         rating: '3.3',
@@ -92,7 +92,7 @@ const getResults = ({input}) => {
       {
         id: 8,
         title: 'Good Luck RV Park',
-        coordinates: [-73.032, -45.913],
+        coordinates: [-123.032, 47.613],
         description: 'Washington, D.C.',
         selected: false,
         rating: '3.2',
@@ -103,7 +103,7 @@ const getResults = ({input}) => {
       {
         id: 9,
         title: 'Lakeridge Campgrounds and RV Park',
-        coordinates: [-122.414, 30.776],
+        coordinates: [-102.414, 30.776],
         description: 'San Francisco, California',
         selected: false,
         rating: '3.1',
