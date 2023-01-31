@@ -9,6 +9,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3Ztcjhme
 
 export default function App() {
   const [results, setResults] = useState([]);
+  const [stops, setStops] = useState([]);
 
   console.log("Rendering application");
   
@@ -22,10 +23,9 @@ export default function App() {
   }; 
 
   const addToTrip = (e, id) => {
-    console.log("Adding card #" + id + "to trip");
+    console.log("Adding card #" + id + " to trip");
     e.stopPropagation(); // prevent selectCard() from calling
-    setResults(
-      results.filter((result) => result.id == id));
+    setStops(stops.concat(results.filter((result) => result.id == id)));
   };
 
   /*********************** MapBox ***********************/
@@ -91,7 +91,7 @@ export default function App() {
 
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard} onAdd={addToTrip}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} stops={stops} setStops={setStops} onSelect={selectCard} onAdd={addToTrip}/>
       {/* <Map data={results} setData={setResults}/> */}  
       <div ref={mapContainer} className="map-container" />
     </div>

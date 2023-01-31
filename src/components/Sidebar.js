@@ -23,7 +23,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Sidebar({results, setResults, onSelect, onAdd}) {
+export default function Sidebar({results, setResults, stops, setStops, onSelect, onAdd}) {
   console.log("Rendering sidebar");
 
   const [message, setMessage] = useState('');
@@ -76,7 +76,9 @@ export default function Sidebar({results, setResults, onSelect, onAdd}) {
                 </div>
               </TabPanel>
               <TabPanel value={tab} index={1}>
-                Item Two
+              <div id="result-container" tabIndex={-1}>
+                {stops.length === 0 ? (<h5 style={{margin: 0, marginTop: "0.5em", color: "black"}}>You have no stops in your current trip.</h5>) : (<Results results={stops}></Results>)}
+                </div>
               </TabPanel>
             </Box>
         </div>
