@@ -17,29 +17,15 @@ import colors from "../colors.js";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-// styling materialui theme for tab bar
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: colors.primary,
-    },
-  },
-});
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Sidebar({
   results,
   setResults,
   stops,
   setStops,
-  onSelect,
+  selectResult,
+  selectStop,
   onAdd,
+  setView,
 }) {
   console.log("Rendering sidebar");
 
@@ -54,7 +40,6 @@ export default function Sidebar({
     if (event.key === "Enter") {
       // 👇 Get input value
       setUpdated(message);
-      console.log("ENTER");
       Search({ setResults });
     }
   };
@@ -63,6 +48,7 @@ export default function Sidebar({
   const [tab, setTab] = React.useState(0);
   const handleTabChange = (event, newTab) => {
     setTab(newTab);
+    setView(newTab);
   };
 
   return (
@@ -76,17 +62,17 @@ export default function Sidebar({
       tabIndex={-1}
       disableAutoFocus
     >
-      <ThemeProvider theme={theme}>
-        <Box sx={{ width: "100%" }}>
-          <div className="box" tabIndex={-1}>
-            <div className="head" id="search-container" tabIndex={-1}>
-              <Header />
-              <ColoredLine color="var(--grey)" tabIndex={-1} />
-              <SearchBar
-                icon={PinIcon}
-                handleChange={handleChange}
-                handleKeyDown={handleKeyDown}
-              />
+      <Box sx={{ width: "100%" }}>
+        <div className="box" tabIndex={-1}>
+          <div className="head" id="search-container" tabIndex={-1}>
+            <Header />
+            <ColoredLine color="var(--grey)" tabIndex={-1} />
+            <SearchBar
+              icon={PinIcon}
+              handleChange={handleChange}
+              handleKeyDown={handleKeyDown}
+            />
+            <ThemeProvider theme={theme}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs
                   centered
@@ -98,35 +84,49 @@ export default function Sidebar({
                   <Tab label="Current Trip" {...a11yProps(1)} />
                 </Tabs>
               </Box>
-            </div>
-
-            <div className="content" id="scroll-container" tabIndex={-1}>
-              <TabPanel value={tab} index={0}>
-                <div id="result-container" tabIndex={-1}>
-                  <Results
-                    results={results}
-                    onSelect={onSelect}
-                    onAdd={onAdd}
-                  />
-                </div>
-              </TabPanel>
-              <TabPanel value={tab} index={1}>
-                <div id="result-container" tabIndex={-1}>
-                  {stops.length === 0 ? (
-                    <h5
-                      style={{ margin: 0, marginTop: "0.5em", color: "black" }}
-                    >
-                      You have no stops in your current trip.
-                    </h5>
-                  ) : (
-                    <Results results={stops}></Results>
-                  )}
-                </div>
-              </TabPanel>
-            </div>
+            </ThemeProvider>
           </div>
-        </Box>
-      </ThemeProvider>
+
+          <div className="content" id="scroll-container" tabIndex={-1}>
+            <TabPanel value={tab} index={0}>
+              <div id="result-container" tabIndex={-1}>
+                <Results
+                  results={results}
+                  onSelect={selectResult}
+                  onAdd={onAdd}
+                />
+              </div>
+            </TabPanel>
+            <TabPanel value={tab} index={1}>
+              <div id="result-container" tabIndex={-1}>
+                {stops.length === 0 ? (
+                  <h5 style={{ margin: 0, marginTop: "0.5em", color: "black" }}>
+                    You have no stops in your current trip.
+                  </h5>
+                ) : (
+                  <Results results={stops} onSelect={selectStop}></Results>
+                )}
+              </div>
+            </TabPanel>
+          </div>
+        </div>
+      </Box>
     </Menu>
   );
+}
+
+// styling materialui theme for tab bar
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.primary,
+    },
+  },
+});
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
 }
