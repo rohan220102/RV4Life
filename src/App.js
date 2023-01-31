@@ -10,7 +10,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3Ztcjhme
 export default function App() {
   const [results, setResults] = useState([]);
 
-  console.log("Rendering Application");
+  console.log("Rendering application");
   
   const selectCard = (id) => {
     console.log("Selected")
@@ -22,10 +22,10 @@ export default function App() {
   }; 
 
   const addToTrip = (e, id) => {
+    console.log("Adding card #" + id + "to trip");
     e.stopPropagation(); // prevent selectCard() from calling
     setResults(
       results.filter((result) => result.id == id));
-    console.log("Added card #" + id);
   };
 
   /*********************** MapBox ***********************/
@@ -57,9 +57,8 @@ export default function App() {
   });
 
   useEffect(() => {
+    console.log('Updating markers');
     addMarkers(results);
-    console.log(results);
-    console.log('Updated markers');
   }, [results]);
  
   const addMarkers = (results) => {
@@ -87,8 +86,6 @@ export default function App() {
     }
     setMarkers(newMarkers); // update markers state
   }
-
-  console.log("Added markers");
 
   /*******************************************************/
 

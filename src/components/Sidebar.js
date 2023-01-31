@@ -11,7 +11,7 @@ import { ReactComponent as OpenMenuBtn } from '../media/right_arrow.svg';
 import PinIcon from '../media/pin1.png';
 
 export default function Sidebar({results, setResults, onSelect, onAdd}) {
-  console.log("Rendering Sidebar");
+  console.log("Rendering sidebar");
 
   const [message, setMessage] = useState('');
   const [updated, setUpdated] = useState('');
