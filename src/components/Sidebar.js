@@ -12,9 +12,19 @@ import PinIcon from '../media/pin1.png';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TabPanel from './Tab.js'
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import colors from '../colors.js'
+
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+// styling materialui theme for tab bar
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.primary
+    }
+  }
+})
 
 function a11yProps(index) {
   return {
@@ -58,18 +68,19 @@ export default function Sidebar({results, setResults, stops, setStops, onSelect,
 
         
         <div className='content' id="scroll-container" tabIndex={-1}>
-          <Box sx={{width: '100%'}}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
-              <Tabs
-                centered
-                value={tab} 
-                onChange={handleTabChange}
-                aria-label='suggestions and current trip tabs'
-              >
-                <Tab label="Next Stops" {...a11yProps(0)} />
-                <Tab label="Current Trip" {...a11yProps(1)} />
-              </Tabs>
-            </Box>
+          <ThemeProvider theme={theme}>
+            <Box sx={{width: '100%'}}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+                <Tabs
+                  centered
+                  value={tab} 
+                  onChange={handleTabChange}
+                  aria-label='suggestions and current trip tabs'
+                >
+                  <Tab label="Next Stops" {...a11yProps(0)} />
+                  <Tab label="Current Trip" {...a11yProps(1)} />
+                </Tabs>
+              </Box>
               <TabPanel value={tab} index={0}>
                 <div id="result-container" tabIndex={-1}>
                 <Results results={results} onSelect={onSelect} onAdd={onAdd}/>
@@ -81,6 +92,7 @@ export default function Sidebar({results, setResults, stops, setStops, onSelect,
                 </div>
               </TabPanel>
             </Box>
+          </ThemeProvider>
         </div>
 
       </div>

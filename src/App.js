@@ -41,7 +41,7 @@ export default function App() {
     console.log("Creating map");
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/navigation-day-v1',
+      style: 'mapbox://styles/quynh16/cldjj7h73001m01rnw8y30hhm',
       center: [lng, lat],
       zoom: zoom
     });
