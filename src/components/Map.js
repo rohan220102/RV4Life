@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import '../css/map.css'
+import colors from '../colors';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig';
 
@@ -26,6 +27,9 @@ export default class Map extends React.PureComponent {
       center: [lng, lat],
       zoom: zoom
     });
+    this.map.on('click', (e) => {
+      console.log(e);
+    });
   }
 
   removeMarkers() {
@@ -40,18 +44,20 @@ export default class Map extends React.PureComponent {
     console.log("Cleared markers");
     this.removeMarkers();
 
-    for (const feature of data) {      
-      // create a HTML element for each feature
+    for (const obj of data) {      
+      // create a HTML element for each object
       const el = document.createElement('div');
       el.className = 'marker';
 
-      // make a marker for each feature and add to the map
-      this.markers.push(new mapboxgl.Marker({color: 'var(--red)'})
-        .setLngLat(feature.coordinates)
+      // make a marker for each object and add to the map
+      this.markers.push(new mapboxgl.Marker({color: 
+        obj.selected ? colors.primary : colors.secondary
+      })
+        .setLngLat(obj.coordinates)
         .setPopup(
         new mapboxgl.Popup({ offset: 25 }) // add popups
         .setHTML(
-        `<h3>${feature.title}</h3><p>${feature.description}</p>`
+        `<h3>${obj.title}</h3><p>${obj.description}</p>`
         )
         )
         .addTo(this.map));
@@ -69,7 +75,6 @@ export default class Map extends React.PureComponent {
 
   render() {
     console.log("Rendering Map");
-    const {lng, lat, zoom, geojson} = this.state;
     this.addMarkers(this.state['geojson']);
 
     return (
