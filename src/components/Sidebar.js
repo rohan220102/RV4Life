@@ -47,6 +47,7 @@ export default function Sidebar({results, setResults, stops, setStops, onSelect,
     if (event.key === 'Enter') {
       // 👇 Get input value
       setUpdated(message);
+      console.log("ENTER")
       Search({setResults});
     }
   };

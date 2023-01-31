@@ -1,0 +1,4 @@
+.input:focus {
+  background: white;
+  outline: 2px solid var(--grey);
+}
