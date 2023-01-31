@@ -15,19 +15,17 @@ export default function App() {
   const selectCard = (id) => {
     setResults(
       results.map((result) =>
-        result.id === id ? {...result, selected: true} :
+        result.id == id ? {...result, selected: true} :
         {...result, selected: false}
-      )
-    );
-    addMarkers(results);
+      ));
   }; 
 
   /*********************** MapBox ***********************/
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-97.113020);
-  const [lat, setLat] = useState(32.633330);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLng] = useState(-110.113020);
+  const [lat, setLat] = useState(40.633330);
+  const [zoom, setZoom] = useState(3);
   const [markers, setMarkers] = useState([]);
   
   useEffect(() => {
@@ -47,14 +45,18 @@ export default function App() {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
+    console.log("USing effect");
+
     });
   });
+
+  useEffect(() => {
+    addMarkers(results);
+    console.log('Updated markers');
+  }, [results]);
  
   const addMarkers = (results) => {
-    for (const marker of markers) {
-      marker.remove();
-    }
-  
+    for (const marker of markers) marker.remove();
     const newMarkers = [];
   
     for (const res of results) {      
@@ -62,6 +64,7 @@ export default function App() {
       const el = document.createElement('div');
       el.className = 'marker';
   
+      console.log(res.selected);
       // make a marker for each object and add to the map
       newMarkers.push(new mapboxgl.Marker({color: 
         res.selected ? colors.primary : colors.secondary
@@ -70,7 +73,6 @@ export default function App() {
         .setHTML(`<h3>${res.title}</h3><p>${res.description}</p>`)
       ).addTo(map.current));
     }
-  
     setMarkers(newMarkers);
   }
 
@@ -80,7 +82,7 @@ export default function App() {
 
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard} addMarkers={addMarkers}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'app-container'} results={results} setResults={setResults} onSelect={selectCard}/>
       {/* <Map data={results} setData={setResults}/> */}  
       <div ref={mapContainer} className="map-container" />
     </div>

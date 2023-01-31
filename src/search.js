@@ -6,7 +6,7 @@ import colors from './colors.js'
 mapboxgl.accessToken = 'pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig';
 
       
-export default function search({setResults, addMarkers}) {
+export default function search({setResults}) {
   // const results = document.getElementById("results"); 
   const input = document.getElementById("start-input").value;
 
@@ -17,9 +17,5 @@ export default function search({setResults, addMarkers}) {
   // results.innerHTML = str;
 
   const results = getResults(input);
-
-  // setting pinpoints on map;
   setResults(results);
-  addMarkers(results);
-  console.log("Added markers");
 };
