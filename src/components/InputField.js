@@ -36,7 +36,13 @@ const InputField = ({ icon, placeholder, onChange, onKeyDown, id }) => {
 
   return (
     <Wrapper>
-      <Icon src={icon} focused={focused} tabIndex={-1} id="icon" />
+      <Icon
+        src={icon}
+        focused={focused}
+        isTyping={input.value !== ""}
+        tabIndex={-1}
+        id="icon"
+      />
       <Input
         onFocus={onFocus}
         onBlur={onBlur}
@@ -83,7 +89,8 @@ const Wrapper = styled.div`
 const Icon = styled.img`
   height: 1rem;
   width: 0.8rem;
-  background: ${(props) => (props.focused ? "white" : "var(--grey)")};
+  background: ${(props) =>
+    props.isTyping || props.focused ? "white" : "var(--grey)"};
   position: relative;
   box-sizing: border-box;
   top: 2.22em;
@@ -102,11 +109,11 @@ const Input = styled.input`
   padding-left: 28px;
   padding-right: 10px;
   left: 2px;
-  background: var(--grey);
+  background: ${(props) => (props.isTyping ? "white" : "var(--grey)")};
   border-width: 0;
   font-size: 13px;
   font-weight: bold;
-  color: var(--darkgrey);
+  color: ${(props) => (props.isTyping ? "black" : "var(--darkgrey)")};
   display: grid;
   justify-self: center;
   border-color: blue;
