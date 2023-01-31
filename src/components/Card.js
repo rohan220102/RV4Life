@@ -13,9 +13,7 @@ const Card = ({title, rating, detour, visited, temp, id, selected=false, onSelec
           <h4>{title}</h4>
           <Rating rating={rating}/>
         </div>
-        {selected && (
-          <Button className="btn" color={colors.primary} text="Add"/>
-        )}
+        <Button className="btn" color={colors.primary} text="Add"/>
       </header>
       <p>{detour}</p>
       <p>{visited}</p>

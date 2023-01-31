@@ -8,8 +8,13 @@ export default function App() {
   console.log("Rendering Application");
   
   const selectCard = (id) => {
-    console.log(id);
-  } 
+    setResults(
+      results.map((result) =>
+        result.id === id ? {...result, selected: true} :
+        {...result, selected: false}
+      )
+    );
+  }; 
 
   return (
     <div className="App" id={"app-container"}>
