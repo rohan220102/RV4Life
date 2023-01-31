@@ -28,7 +28,7 @@ const useInput = (initialValue) => {
   };
 };
 
-const InputField = ({ icon, placeholder, onChange, onKeyDown, id }) => {
+const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
   const input = useInput("");
   const [focused, setFocused] = useState(false);
   const onFocus = () => setFocused(true);
@@ -51,7 +51,7 @@ const InputField = ({ icon, placeholder, onChange, onKeyDown, id }) => {
         id={id}
         className="input"
         onChange={onChange}
-        onKeyDown={onKeyDown}
+        onKeyDown={onEnterSelect}
         placeholder={placeholder}
         {...input}
         isTyping={input.value !== ""}
@@ -67,6 +67,7 @@ const InputField = ({ icon, placeholder, onChange, onKeyDown, id }) => {
                   e.stopPropagation(); // prevent selectCard() from calling
                   input.setValue(suggestion.place_name);
                   input.setSuggestions([]);
+                  onEnterSelect(e);
                 }}
               >
                 {suggestion.place_name}

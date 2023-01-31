@@ -36,8 +36,8 @@ export default function Sidebar({
     setMessage(event.target.value);
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+  const onEnterSelect = (e) => {
+    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
       // 👇 Get input value
       setUpdated(message);
       Search({ setResults });
@@ -70,7 +70,7 @@ export default function Sidebar({
             <SearchBar
               icon={PinIcon}
               handleChange={handleChange}
-              handleKeyDown={handleKeyDown}
+              onEnterSelect={onEnterSelect}
             />
             <ThemeProvider theme={theme}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
