@@ -1,32 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import "../css/InputField.css";
-
-const useInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  const [suggestions, setSuggestions] = useState([]);
-
-  const handleChange = async (event) => {
-    setValue(event.target.value);
-
-    try {
-      const endpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${event.target.value}.json?access_token=pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig`;
-      const response = await fetch(endpoint);
-      const results = await response.json();
-      setSuggestions(results?.features);
-    } catch (error) {
-      console.log("Error fetching data, ", error);
-    }
-  };
-
-  return {
-    value,
-    onChange: handleChange,
-    setValue,
-    suggestions,
-    setSuggestions,
-  };
-};
+import useInput from "./useInput.js";
 
 const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
   const input = useInput("");
@@ -36,13 +11,6 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
 
   return (
     <Wrapper>
-      <Icon
-        src={icon}
-        focused={focused}
-        isTyping={input.value !== ""}
-        tabIndex={-1}
-        id="icon"
-      />
       <Input
         onFocus={onFocus}
         onBlur={onBlur}
@@ -107,7 +75,7 @@ const Input = styled.input`
   width: 98.95%;
   box-sizing: border-box;
   padding: 0;
-  padding-left: 28px;
+  padding-left: 10px;
   padding-right: 10px;
   left: 2px;
   background: ${(props) => (props.isTyping ? "white" : "var(--grey)")};
