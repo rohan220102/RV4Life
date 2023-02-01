@@ -4,10 +4,12 @@ const colors = {
   grey: "#f1f2f6",
   darkgrey: "#a6a6a6",
   mediumgrey: "#cacacb",
-}
+  yellow: "#ffde59",
+};
 
 export default {
   primary: colors.red,
   secondary: colors.darkgrey,
-  background: colors.grey
+  background: colors.grey,
+  stars: colors.yellow,
 };
