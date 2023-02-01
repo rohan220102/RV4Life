@@ -21,7 +21,7 @@ export default function DateInput({ onEnterSelect }) {
   };
 
   const onBlur = () => {
-    if (date === undefined) setFocused(false);
+    if (date === "") setFocused(false);
   };
 
   return (
@@ -29,10 +29,8 @@ export default function DateInput({ onEnterSelect }) {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           tabIndex={-1}
-          label="Enter a day"
           value={date}
           onChange={(newValue) => {
-            console.log("new value");
             setDate(newValue);
             setFocused(true);
           }}

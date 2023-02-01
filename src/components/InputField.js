@@ -82,26 +82,26 @@ const Icon = styled.img`
 `;
 
 const Input = styled.input`
+  display: grid;
+  justify-self: center;
   width: 98.95%;
   height: 32px;
+  background: ${(props) => (props.isTyping ? "white" : "var(--grey)")};
   position: relative;
+  left: 2px;
   box-sizing: border-box;
   padding: 0 10px;
-  left: 2px;
-  background: ${(props) => (props.isTyping ? "white" : "var(--grey)")};
-  border-width: 0;
   font-size: 13px;
   font-weight: bold;
   color: ${(props) => (props.isTyping ? "black" : "var(--darkgrey)")};
-  display: grid;
-  justify-self: center;
+  border-width: 0;
   border-color: blue;
-  outline: 2px solid var(--grey);
   border-style: solid;
   border-radius: ${(props) =>
     props.isTyping && props.focused && props.showSuggestions
       ? "4px 4px 0px 0px"
       : "4px"};
+  outline: 2px solid var(--grey);
 `;
 
 const SuggestionWrapper = styled.div`
