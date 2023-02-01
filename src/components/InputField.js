@@ -6,9 +6,10 @@ import useInput from "./useInput.js";
 const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
   const input = useInput("");
   const [focused, setFocused] = useState(false);
+
   const onFocus = () => setFocused(true);
   const onBlur = (e) => {
-    if (!e.relatedTarget.classList.contains("suggestion")) setFocused(false);
+    if (!e.relatedTarget.classList?.contains("suggestion")) setFocused(false);
   };
 
   return (
@@ -81,14 +82,11 @@ const Icon = styled.img`
 `;
 
 const Input = styled.input`
-  border-radius: 4px;
+  width: 98.95%;
   height: 32px;
   position: relative;
-  width: 98.95%;
   box-sizing: border-box;
-  padding: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px;
   left: 2px;
   background: ${(props) => (props.isTyping ? "white" : "var(--grey)")};
   border-width: 0;
@@ -101,10 +99,9 @@ const Input = styled.input`
   outline: 2px solid var(--grey);
   border-style: solid;
   border-radius: ${(props) =>
-    props.isTyping &&
-    props.focused &&
-    props.showSuggestions &&
-    "4px 4px 0px 0px"};
+    props.isTyping && props.focused && props.showSuggestions
+      ? "4px 4px 0px 0px"
+      : "4px"};
 `;
 
 const SuggestionWrapper = styled.div`

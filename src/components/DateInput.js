@@ -10,28 +10,19 @@ import "../css/dateInput.css";
 import useInput from "./useInput";
 
 export default function DateInput({ onEnterSelect }) {
-  const [date, setDate] = React.useState();
+  const [date, setDate] = useState("");
   const input = useInput("");
   const [focused, setFocused] = useState(false);
 
   const onFocus = (e) => {
-    e.currentTarget.value = "";
-    console.log(e);
+    console.log(e.target.getValue);
     setFocused(true);
-    setDate();
+    setDate("");
   };
 
   const onBlur = () => {
-    if (date == undefined) setFocused(false);
+    if (date === undefined) setFocused(false);
   };
-
-  function clearText(field) {
-    if (field.defaultValue == field.value) {
-      field.value = "";
-    } else if (field.value == "") {
-      field.value = field.defaultValue;
-    }
-  }
 
   return (
     <Wrapper focused={focused} isTyping={input.date !== ""}>
@@ -41,11 +32,12 @@ export default function DateInput({ onEnterSelect }) {
           label="Enter a day"
           value={date}
           onChange={(newValue) => {
+            console.log("new value");
             setDate(newValue);
             setFocused(true);
           }}
           renderInput={({ inputRef, inputProps, InputProps }) => {
-            console.log(inputProps.value);
+            console.log("Rendering input" + inputProps.value);
             return (
               <Box tabIndex={-1} sx={{ display: "flex", alignItems: "center" }}>
                 <Input
@@ -55,7 +47,9 @@ export default function DateInput({ onEnterSelect }) {
                   onKeyDown={onEnterSelect}
                   type={"tel"}
                   ref={inputRef}
-                  value={inputProps.value}
+                  value={
+                    date !== "" || focused ? inputProps.value : "Select a date"
+                  }
                   onChange={inputProps.onChange}
                 />
                 {InputProps?.endAdornment}
