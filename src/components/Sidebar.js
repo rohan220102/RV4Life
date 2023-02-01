@@ -5,16 +5,14 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import Search from "../search";
 import ColoredLine from "./ColoredLine";
-import Results from "./Results.js";
 import { ReactComponent as CloseMenuBtn } from "../media/left_arrow.svg";
 import { ReactComponent as OpenMenuBtn } from "../media/right_arrow.svg";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import TabPanel from "./Tab.js";
 import Box from "@mui/material/Box";
 import colors from "../colors.js";
+import UnstyledTabsCustomized from "./Tabs";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Tabs from "./Tabs";
 
 export default function Sidebar({
   results,
@@ -53,55 +51,24 @@ export default function Sidebar({
       tabIndex={-1}
       disableAutoFocus
     >
-      <Box sx={{ width: "100%" }}>
-        <div className="box" tabIndex={-1}>
-          <div className="head" id="search-container" tabIndex={-1}>
-            <Header />
-            <ColoredLine color="var(--grey)" tabIndex={-1} />
-            <SearchBar
-              userInput={userInput}
-              setUserInput={setUserInput}
-              setResults={setResults}
-            />
-            <ThemeProvider theme={theme}>
-              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <Tabs
-                  centered
-                  value={tab}
-                  onChange={handleTabChange}
-                  aria-label="suggestions and current trip tabs"
-                >
-                  <Tab label="Next Stops" {...a11yProps(0)} />
-                  <Tab label="Current Trip" {...a11yProps(1)} />
-                </Tabs>
-              </Box>
-            </ThemeProvider>
-          </div>
-
-          <div className="content" id="scroll-container" tabIndex={-1}>
-            <TabPanel value={tab} index={0}>
-              <div id="result-container" tabIndex={-1}>
-                <Results
-                  results={results}
-                  onSelect={selectResult}
-                  addToTrip={addToTrip}
-                />
-              </div>
-            </TabPanel>
-            <TabPanel value={tab} index={1}>
-              <div id="result-container" tabIndex={-1}>
-                {stops.length === 0 ? (
-                  <h5 style={{ margin: 0, marginTop: "0.5em", color: "black" }}>
-                    You have no stops in your current trip.
-                  </h5>
-                ) : (
-                  <Results results={stops} onSelect={selectStop}></Results>
-                )}
-              </div>
-            </TabPanel>
-          </div>
-        </div>
-      </Box>
+      <div id="search-container" tabIndex={-1}>
+        <Header />
+        <ColoredLine color="var(--grey)" tabIndex={-1} />
+        <SearchBar
+          userInput={userInput}
+          setUserInput={setUserInput}
+          setResults={setResults}
+        />
+      </div>
+      <div id="tab-container">
+        <Tabs
+          results={results}
+          selectResult={selectResult}
+          addToTrip={addToTrip}
+          stops={stops}
+          selectStop={selectStop}
+        ></Tabs>
+      </div>
     </Menu>
   );
 }

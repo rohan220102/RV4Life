@@ -4,6 +4,8 @@
   background-color: white;
   overflow: hidden;
   padding-bottom: 0.8em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #rvlife {
@@ -15,7 +17,7 @@
 #planner {
   font-weight: 100;
 }
-  
+
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
@@ -24,7 +26,7 @@
   text-decoration: none;
   font-size: 20px;
 }
-  
+
 /* Add a color to the active/current link */
 .topnav a.active {
   color: red;

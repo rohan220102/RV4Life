@@ -1,0 +1,68 @@
+#results {
+  color: black;
+  margin: 0;
+}
+
+#scroll-container {
+  border: none;
+  overflow-y: scroll;
+}
+
+#result-container {
+  margin: 0;
+  padding: 0em 1em 0.5em 1em;
+}
+
+#view-label {
+  font-weight: bold;
+  font-size: 10px;
+  color: var(--darkgrey);
+  top: 23%;
+  position: relative;
+  margin-right: 0.8em;
+}
+
+/**************** Scrolling ***************/
+.box {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  overflow: auto;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.head {
+  border: none;
+  flex-shrink: 0;
+  margin: 0 1em 0.7em 1em;
+}
+
+.content {
+  border: none;
+  flex: 1;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--darkgrey);
+}
