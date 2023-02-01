@@ -7,8 +7,6 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 import "../css/dateInput.css";
-import useInput from "./useInput";
-import SearchBar from "./SearchBar";
 import Search from "../search";
 
 export default function DateInput({ userInput, setUserInput, setResults }) {

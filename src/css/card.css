@@ -21,8 +21,28 @@ h4 {
 
 p {
   font-size: 14px;
+  margin: 0;
+}
+
+span {
+  font-size: 14px;
   color: var(--darkgrey);
   margin: 0;
+}
+
+.card-value {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--darkgrey);
+  margin: 0;
+}
+
+.card-description {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--darkgrey);
+  margin: 0;
+  margin-right: 1em;
 }
 
 /******* Title, button, and rating *******/

@@ -113,7 +113,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: var(--red);
+  background-color: var(--darkgrey);
 }
 
 /****** Tab ******/

@@ -146,6 +146,7 @@ const SuggestionWrapper = styled.div`
 const Suggestion = styled.p`
   display: ${(props) => (props.focused ? "block" : "none")};
   cursor: pointer;
+  color: var(--darkgrey);
   box-sizing: border-box;
   width: 100%;
   padding: 6px 10px;
