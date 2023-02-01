@@ -7,13 +7,15 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
   const input = useInput("");
   const [focused, setFocused] = useState(false);
   const onFocus = () => setFocused(true);
-  const onBlur = () => setFocused(false);
+  const onBlur = (e) => {
+    if (!e.relatedTarget.classList.contains("suggestion")) setFocused(false);
+  };
 
   return (
     <Wrapper>
       <Input
         onFocus={onFocus}
-        onBlur={onBlur}
+        onBlur={(e) => onBlur(e)}
         focused={focused}
         showSuggestions={input.suggestions?.length > 0}
         id={id}
@@ -27,12 +29,14 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
       />
 
       {input.suggestions?.length > 0 && (
-        <SuggestionWrapper>
+        <SuggestionWrapper focused={focused}>
           {input.suggestions.map((suggestion, index) => {
             return (
               <Suggestion
+                focused={focused}
                 key={index}
                 tabIndex={0}
+                className="suggestion"
                 onClick={(e) => {
                   e.stopPropagation(); // prevent selectCard() from calling
                   input.setValue(suggestion.place_name);
@@ -104,21 +108,21 @@ const Input = styled.input`
 `;
 
 const SuggestionWrapper = styled.div`
+  display: ${(props) => (props.focused ? "block" : "none")};
   background: white;
   position: absolute;
-  width: 91.5%;
+  width: 91.43%;
   box-sizing: border-box;
-  padding: 15px 20px;
-  border-radius: 0px 0px 10px 10px;
   z-index: 100;
   box-shadow: inset -2px 0 0 var(--grey), inset 0 -2px 0 var(--grey),
     inset 2px 0 0 var(--grey), inset 0 2px 0 var(--grey);
 `;
 
 const Suggestion = styled.p`
+  display: ${(props) => (props.focused ? "block" : "none")};
   cursor: pointer;
+  box-sizing: border-box;
   width: 100%;
-  border-top: 2px solid;
-  border-bottom: 1px solid;
-  padding: 4px 0 4px 0;
+  padding: 6px 10px;
+  position: relative;
 `;
