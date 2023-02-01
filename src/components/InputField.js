@@ -18,6 +18,7 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
         showSuggestions={input.suggestions?.length > 0}
         id={id}
         className="input"
+        autoFocus
         onChange={onChange}
         onKeyDown={onEnterSelect}
         placeholder={placeholder}
@@ -31,11 +32,18 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
             return (
               <Suggestion
                 key={index}
+                tabIndex={0}
                 onClick={(e) => {
                   e.stopPropagation(); // prevent selectCard() from calling
                   input.setValue(suggestion.place_name);
                   input.setSuggestions([]);
                   onEnterSelect(e);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    input.setValue(suggestion.place_name);
+                    input.setSuggestions([]);
+                  }
                 }}
               >
                 {suggestion.place_name}
@@ -110,4 +118,7 @@ const SuggestionWrapper = styled.div`
 const Suggestion = styled.p`
   cursor: pointer;
   width: 100%;
+  border-top: 2px solid;
+  border-bottom: 1px solid;
+  padding: 4px 0 4px 0;
 `;

@@ -41,6 +41,8 @@ export default function Sidebar({
       // 👇 Get input value
       setUpdated(message);
       Search({ setResults });
+      console.log(e);
+      e.target.blur();
     }
   };
 

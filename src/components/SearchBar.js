@@ -13,7 +13,7 @@ const SearchBar = ({ icon, handleChange, onEnterSelect }) => {
         onChange={handleChange}
         onEnterSelect={onEnterSelect}
       />
-      <DateInput></DateInput>
+      <DateInput tabIndex={-1} onEnterSelect={onEnterSelect}></DateInput>
     </>
   );
 };

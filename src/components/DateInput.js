@@ -9,38 +9,58 @@ import styled from "styled-components";
 import "../css/dateInput.css";
 import useInput from "./useInput";
 
-export default function DateInput() {
-  const [value, setValue] = React.useState();
+export default function DateInput({ onEnterSelect }) {
+  const [date, setDate] = React.useState();
   const input = useInput("");
   const [focused, setFocused] = useState(false);
-  const onFocus = () => setFocused(true);
-  const onBlur = () => setFocused(false);
+
+  const onFocus = (e) => {
+    e.currentTarget.value = "";
+    console.log(e);
+    setFocused(true);
+    setDate();
+  };
+
+  const onBlur = () => {
+    if (date == undefined) setFocused(false);
+  };
+
+  function clearText(field) {
+    if (field.defaultValue == field.value) {
+      field.value = "";
+    } else if (field.value == "") {
+      field.value = field.defaultValue;
+    }
+  }
 
   return (
-    <Wrapper focused={focused} isTyping={input.value !== ""}>
+    <Wrapper focused={focused} isTyping={input.date !== ""}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
+          tabIndex={-1}
           label="Enter a day"
-          value={value}
+          value={date}
           onChange={(newValue) => {
-            setValue(newValue);
+            setDate(newValue);
           }}
-          renderInput={({ inputRef, inputProps, InputProps }) => (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Input
-                placeholder="Select a departure date"
-                onFocus={onFocus}
-                onBlur={onBlur}
-                focused={focused}
-                ref={inputRef}
-                inputProps={{
-                  ...inputProps,
-                  placeholder: "tt.mm.jjjj",
-                }}
-              />
-              {InputProps?.endAdornment}
-            </Box>
-          )}
+          renderInput={({ inputRef, inputProps, InputProps }) => {
+            console.log(inputProps.value);
+            return (
+              <Box tabIndex={-1} sx={{ display: "flex", alignItems: "center" }}>
+                <Input
+                  onFocus={(e) => onFocus(e)}
+                  onBlur={onBlur}
+                  focused={focused}
+                  onKeyDown={onEnterSelect}
+                  type={"tel"}
+                  ref={inputRef}
+                  value={inputProps.value}
+                  onChange={inputProps.onChange}
+                />
+                {InputProps?.endAdornment}
+              </Box>
+            );
+          }}
         />
       </LocalizationProvider>
     </Wrapper>
