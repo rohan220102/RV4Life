@@ -1,19 +1,26 @@
 import "../css/searchBar.css";
 import InputField from "./InputField";
 import DateInput from "./DateInput";
+import PinIcon from "../media/pin1.png";
 
-const SearchBar = ({ icon, handleChange, onEnterSelect }) => {
+const SearchBar = ({ userInput, setUserInput, setResults }) => {
   return (
     <div id="searchbar">
       <InputField
         autofocus
-        icon={icon}
+        icon={PinIcon}
         id="start-input"
         placeholder="Enter a starting location"
-        onChange={handleChange}
-        onEnterSelect={onEnterSelect}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        setResults={setResults}
       />
-      <DateInput tabIndex={-1} onEnterSelect={onEnterSelect}></DateInput>
+      <DateInput
+        tabIndex={-1}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        setResults={setResults}
+      ></DateInput>
     </div>
   );
 };

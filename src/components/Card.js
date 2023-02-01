@@ -34,8 +34,9 @@ const Card = ({
           text="Add"
         />
       </header>
-      <p>{detour}</p>
-      <p>{visited}</p>
+      <span>{detour} detour </span>
+      <span>{visited} visited </span>
+      <span>{temp} average</span>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export default function App() {
   console.log("Rendering application");
 
   const selectResult = (id) => {
-    console.log("Selected");
+    console.log("Selected result #" + id);
     setResults(
       results.map((result) =>
         result.id == id
@@ -27,7 +27,7 @@ export default function App() {
   };
 
   const selectStop = (id) => {
-    console.log("Selected");
+    console.log("Selected stop #" + id);
     setStops(
       stops.map((stop) =>
         stop.id == id
@@ -51,6 +51,7 @@ export default function App() {
   const [zoom, setZoom] = useState(3);
   const [markers, setMarkers] = useState([]);
 
+  // initiate map upon first launch
   useEffect(() => {
     if (map.current) return; // initialize map only once
     console.log("Creating map");
@@ -67,6 +68,7 @@ export default function App() {
     });
   });
 
+  // update map when user pans around
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on("move", () => {
@@ -76,6 +78,7 @@ export default function App() {
     });
   });
 
+  // update markers depending on which tab view you're in
   useEffect(
     () => {
       console.log("Updating markers");
@@ -115,7 +118,7 @@ export default function App() {
     setMarkers(newMarkers); // update markers state
   };
 
-  /*******************************************************/
+  /********************** Render ***********************/
 
   return (
     <div className="App" id={"app-container"}>
@@ -124,14 +127,13 @@ export default function App() {
         outerContainerId={"app-container"}
         results={results}
         setResults={setResults}
+        selectResult={selectResult}
         stops={stops}
         setStops={setStops}
-        selectResult={selectResult}
         selectStop={selectStop}
-        onAdd={addToTrip}
+        addToTrip={addToTrip}
         setView={setView}
       />
-      {/* <Map data={results} setData={setResults}/> */}
       <div ref={mapContainer} className="map-container" />
     </div>
   );

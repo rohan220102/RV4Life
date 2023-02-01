@@ -8,7 +8,6 @@ import ColoredLine from "./ColoredLine";
 import Results from "./Results.js";
 import { ReactComponent as CloseMenuBtn } from "../media/left_arrow.svg";
 import { ReactComponent as OpenMenuBtn } from "../media/right_arrow.svg";
-import PinIcon from "../media/pin1.png";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import TabPanel from "./Tab.js";
@@ -24,26 +23,16 @@ export default function Sidebar({
   setStops,
   selectResult,
   selectStop,
-  onAdd,
+  addToTrip,
   setView,
 }) {
   console.log("Rendering sidebar");
-
-  const [message, setMessage] = useState("");
   const [updated, setUpdated] = useState("");
+  const [message, setMessage] = useState("");
+  const [userInput, setUserInput] = useState({ input: {}, date: "" });
 
   const handleChange = (event) => {
     setMessage(event.target.value);
-  };
-
-  const onEnterSelect = (e) => {
-    if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
-      // 👇 Get input value
-      setUpdated(message);
-      Search({ setResults });
-      console.log(e);
-      e.target.blur();
-    }
   };
 
   /***** Tabs *****/
@@ -70,9 +59,9 @@ export default function Sidebar({
             <Header />
             <ColoredLine color="var(--grey)" tabIndex={-1} />
             <SearchBar
-              icon={PinIcon}
-              handleChange={handleChange}
-              onEnterSelect={onEnterSelect}
+              userInput={userInput}
+              setUserInput={setUserInput}
+              setResults={setResults}
             />
             <ThemeProvider theme={theme}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -95,7 +84,7 @@ export default function Sidebar({
                 <Results
                   results={results}
                   onSelect={selectResult}
-                  onAdd={onAdd}
+                  addToTrip={addToTrip}
                 />
               </div>
             </TabPanel>

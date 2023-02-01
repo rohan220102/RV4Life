@@ -2,14 +2,49 @@ import { useState } from "react";
 import styled from "styled-components";
 import "../css/InputField.css";
 import useInput from "./useInput.js";
+import Search from "../search";
+import dayjs from "dayjs";
 
-const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
+const InputField = ({
+  icon,
+  placeholder,
+  id,
+  userInput,
+  setUserInput,
+  setResults,
+}) => {
   const input = useInput("");
   const [focused, setFocused] = useState(false);
 
   const onFocus = () => setFocused(true);
   const onBlur = (e) => {
-    if (!e.relatedTarget.classList?.contains("suggestion")) setFocused(false);
+    if (!e.relatedTarget?.classList?.contains("suggestion")) setFocused(false);
+  };
+
+  const submit = (e, suggestion) => {
+    // if no specific date provided, use today
+    const date = userInput.date === "" ? new Date() : userInput.date;
+    const newUserInput = { input: suggestion, date: date };
+
+    setUserInput(newUserInput); // update state
+    Search(newUserInput, setResults); // fetch results
+
+    input.setValue(suggestion.place_name); // update inputfield
+    e.target.blur();
+  };
+
+  const onEnter = (e) => {
+    if (e.type === "keydown" && e.key === "Enter") {
+      console.log(input.suggestions[0]);
+      if (input.suggestions[0] !== undefined) submit(e, input.suggestions[0]);
+    }
+  };
+
+  const onClick = (e, suggestion) => {
+    console.log(userInput.date);
+    e.stopPropagation(); // prevent selectCard() from calling
+    submit(e, suggestion);
+    setFocused(false);
   };
 
   return (
@@ -22,8 +57,7 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
         id={id}
         className="input"
         autoFocus
-        onChange={onChange}
-        onKeyDown={onEnterSelect}
+        onKeyDown={onEnter}
         placeholder={placeholder}
         {...input}
         isTyping={input.value !== ""}
@@ -38,16 +72,10 @@ const InputField = ({ icon, placeholder, onChange, onEnterSelect, id }) => {
                 key={index}
                 tabIndex={0}
                 className="suggestion"
-                onClick={(e) => {
-                  e.stopPropagation(); // prevent selectCard() from calling
-                  input.setValue(suggestion.place_name);
-                  input.setSuggestions([]);
-                  onEnterSelect(e);
-                }}
+                onClick={(e) => onClick(e, suggestion)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    input.setValue(suggestion.place_name);
-                    input.setSuggestions([]);
+                    onClick(e, suggestion);
                   }
                 }}
               >

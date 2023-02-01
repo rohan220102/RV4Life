@@ -1,15 +1,25 @@
-import Card from './Card.js'
-import { useState } from 'react'
+import Card from "./Card.js";
+import { useState } from "react";
 
-const Results = ({results, onSelect, onAdd}) => {
+const Results = ({ results, onSelect, addToTrip }) => {
   return (
     <>
-    {results.map(({id, title, rating, detour, visited, temp, selected}) => (
-    <Card key={id} title={title} rating={rating} detour={detour} visited=
-    {visited} temp={temp} id={id} selected={selected} onSelect={onSelect}
-    onAdd={onAdd}></Card>))}
+      {results.map(({ id, title, rating, detour, visited, temp, selected }) => (
+        <Card
+          key={id}
+          title={title}
+          rating={rating}
+          detour={detour}
+          visited={visited}
+          temp={temp}
+          id={id}
+          selected={selected}
+          onSelect={onSelect}
+          onAdd={addToTrip}
+        ></Card>
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default Results
+export default Results;

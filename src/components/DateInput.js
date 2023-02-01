@@ -8,24 +8,42 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 import "../css/dateInput.css";
 import useInput from "./useInput";
+import SearchBar from "./SearchBar";
+import Search from "../search";
 
-export default function DateInput({ onEnterSelect }) {
-  const [date, setDate] = useState("");
-  const input = useInput("");
+export default function DateInput({ userInput, setUserInput, setResults }) {
+  const [date, setDate] = useState(null);
   const [focused, setFocused] = useState(false);
 
   const onFocus = (e) => {
     console.log(e.target.getValue);
     setFocused(true);
-    setDate("");
+    setDate(null);
   };
 
   const onBlur = () => {
-    if (date === "") setFocused(false);
+    console.log("The date is " + date);
+    console.log(date === null);
+    if (date === null) setFocused(false);
+  };
+
+  const onSelect = (newValue) => {
+    setDate(newValue);
+    setFocused(true);
+    setUserInput({ input: userInput.input, date: newValue });
+    console.log("onSelect");
+
+    // perform search if input location was provided
+    if (Object.keys(userInput.input).length !== 0)
+      Search(userInput, setResults);
+    else {
+      // TODO: implement this
+      console.log("No user input location");
+    }
   };
 
   return (
-    <Wrapper focused={focused} isTyping={input.date !== ""}>
+    <Wrapper focused={focused}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           tabIndex={-1}
@@ -34,6 +52,7 @@ export default function DateInput({ onEnterSelect }) {
             setDate(newValue);
             setFocused(true);
           }}
+          onAccept={(newValue) => onSelect(newValue)}
           renderInput={({ inputRef, inputProps, InputProps }) => {
             console.log("Rendering input" + inputProps.value);
             return (
@@ -42,12 +61,22 @@ export default function DateInput({ onEnterSelect }) {
                   onFocus={(e) => onFocus(e)}
                   onBlur={onBlur}
                   focused={focused}
-                  onKeyDown={onEnterSelect}
                   type={"tel"}
                   ref={inputRef}
                   value={
-                    date !== "" || focused ? inputProps.value : "Select a date"
+                    date !== null || focused
+                      ? inputProps.value
+                      : "Select a date"
                   }
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      if (Object.keys(userInput.input).length) {
+                        console.log("Searching from DateInput");
+                        Search(userInput, setResults);
+                        e.target.blur();
+                      }
+                    }
+                  }}
                   onChange={inputProps.onChange}
                 />
                 {InputProps?.endAdornment}
