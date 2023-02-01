@@ -4,7 +4,7 @@ import DateInput from "./DateInput";
 
 const SearchBar = ({ icon, handleChange, onEnterSelect }) => {
   return (
-    <>
+    <div id="searchbar">
       <InputField
         autofocus
         icon={icon}
@@ -14,7 +14,7 @@ const SearchBar = ({ icon, handleChange, onEnterSelect }) => {
         onEnterSelect={onEnterSelect}
       />
       <DateInput tabIndex={-1} onEnterSelect={onEnterSelect}></DateInput>
-    </>
+    </div>
   );
 };
 

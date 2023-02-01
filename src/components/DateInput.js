@@ -42,6 +42,7 @@ export default function DateInput({ onEnterSelect }) {
           value={date}
           onChange={(newValue) => {
             setDate(newValue);
+            setFocused(true);
           }}
           renderInput={({ inputRef, inputProps, InputProps }) => {
             console.log(inputProps.value);
