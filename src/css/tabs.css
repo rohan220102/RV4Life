@@ -10,7 +10,7 @@
 
 #result-container {
   margin: 0;
-  padding: 0em 1em 0.5em 1em;
+  padding: 1em 1em 0.5em 1em;
 }
 
 #view-label {
@@ -44,7 +44,10 @@
 .head {
   border: none;
   flex-shrink: 0;
-  margin: 0 1em 0.7em 1em;
+  padding: 0 1em 0.7em 1em;
+  margin-right: 5px;
+  box-shadow: -5px 10px 10px var(--grey);
+  z-index: 100;
 }
 
 .content {
