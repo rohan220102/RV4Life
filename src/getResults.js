@@ -1,4 +1,5 @@
-const getResults = ({ input }) => {
+// this function should communicate with the backend server
+export default function getResults({ input, date }) {
   return [
     {
       id: 0,
@@ -122,6 +123,4 @@ const getResults = ({ input }) => {
       temp: 64,
     },
   ];
-};
-
-export default getResults;
+}

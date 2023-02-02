@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 
 // components
-import Sidebar from "./components/Sidebar";
+import SideBar from "./components/SideBar";
 
 // styles
 import colors from "./colors.js";
@@ -126,7 +126,7 @@ export default function App() {
 
   return (
     <div className="App" id={"app-container"}>
-      <Sidebar
+      <SideBar
         pageWrapId={"page-wrap"}
         outerContainerId={"app-container"}
         results={results}

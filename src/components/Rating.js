@@ -3,6 +3,7 @@ import colors from "../colors.js";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import "../css/rating.css";
 
+// takes in a rating and generates the ratings + stars display
 const Rating = ({ rating }) => {
   return (
     <div className="rating-box">

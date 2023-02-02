@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// helper function to get suggestions
 const useInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
   const [suggestions, setSuggestions] = useState([]);
