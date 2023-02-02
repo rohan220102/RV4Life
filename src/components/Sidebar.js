@@ -1,18 +1,17 @@
+// libraries
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import "../css/sidebar.css";
+
+// components
 import Header from "./Header";
 import SearchBar from "./SearchBar";
-import Search from "../search";
 import ColoredLine from "./ColoredLine";
+import Tabs from "./Tabs";
 import { ReactComponent as CloseMenuBtn } from "../media/left_arrow.svg";
 import { ReactComponent as OpenMenuBtn } from "../media/right_arrow.svg";
-import Box from "@mui/material/Box";
-import colors from "../colors.js";
-import UnstyledTabsCustomized from "./Tabs";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Tabs from "./Tabs";
+// styles
+import "../css/sidebar.css";
 
 export default function Sidebar({
   results,
@@ -25,19 +24,11 @@ export default function Sidebar({
   setView,
 }) {
   console.log("Rendering sidebar");
-  const [updated, setUpdated] = useState("");
   const [message, setMessage] = useState("");
   const [userInput, setUserInput] = useState({ input: {}, date: "" });
 
   const handleChange = (event) => {
     setMessage(event.target.value);
-  };
-
-  /***** Tabs *****/
-  const [tab, setTab] = React.useState(0);
-  const handleTabChange = (event, newTab) => {
-    setTab(newTab);
-    setView(newTab);
   };
 
   return (
@@ -72,20 +63,4 @@ export default function Sidebar({
       </div>
     </Menu>
   );
-}
-
-// styling materialui theme for tab bar
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: colors.primary,
-    },
-  },
-});
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
 }
