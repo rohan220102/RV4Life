@@ -1,12 +1,90 @@
-import * as React from "react";
+// libraries
+import React from "react";
 import { styled } from "@mui/system";
+import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import TabsUnstyled from "@mui/base/TabsUnstyled";
 import TabsListUnstyled from "@mui/base/TabsListUnstyled";
 import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
-import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
+
+// components
 import Results from "./Results";
+
+// styles
 import "../css/tabs.css";
+
+export default function Tabs({
+  results,
+  selectResult,
+  stops,
+  selectStop,
+  setStops,
+  onChange,
+  message,
+}) {
+  // callback for clicking the "Add" button in the Next Stop tab
+  const addToTrip = (e, id) => {
+    console.log("Adding card #" + id + " to trip");
+    e.stopPropagation(); // prevent selectResult() from calling
+    setStops(stops.concat(results.filter((result) => result.id == id)));
+  };
+
+  return (
+    <TabsUnstyled className="container" defaultValue={0} onChange={onChange}>
+      <div className="flex-horizontal">
+        <p id="view-label">View</p>
+        <TabsList>
+          <Tab>Next Stop</Tab>
+          <Tab>Current Trip</Tab>
+        </TabsList>
+      </div>
+      <TabPanel className="cards-container" value={0}>
+        <p>{message}</p>
+        <div tabIndex={-1}>
+          {results.length === 0 ? (
+            <h5
+              style={{
+                textAlign: "center",
+                margin: 0,
+                marginTop: "0.5em",
+                color: "black",
+                padding: "0 1em",
+              }}
+            >
+              Enter a start location to receive suggestions.
+            </h5>
+          ) : (
+            <Results
+              results={results}
+              onSelect={selectResult}
+              addToTrip={addToTrip}
+            />
+          )}
+        </div>
+      </TabPanel>
+      <TabPanel value={1}>
+        <div className="cards-container" tabIndex={-1}>
+          {stops.length === 0 ? (
+            <h5
+              style={{
+                textAlign: "center",
+                margin: 0,
+                marginTop: "0.5em",
+                color: "black",
+                padding: "0 1em",
+              }}
+            >
+              There are no stops in your current trip. You can add one from the
+              "Next Stop" tab.
+            </h5>
+          ) : (
+            <Results results={stops} onSelect={selectStop}></Results>
+          )}
+        </div>
+      </TabPanel>
+    </TabsUnstyled>
+  );
+}
 
 const grey = {
   50: "#f6f8fa",
@@ -75,74 +153,3 @@ const TabsList = styled(TabsListUnstyled)(
   };
   `
 );
-
-export default function Tabs({
-  results,
-  selectResult,
-  stops,
-  selectStop,
-  setStops,
-  onChange,
-}) {
-  // callback for clicking the "Add" button in the Next Stop tab
-  const addToTrip = (e, id) => {
-    console.log("Adding card #" + id + " to trip");
-    e.stopPropagation(); // prevent selectResult() from calling
-    setStops(stops.concat(results.filter((result) => result.id == id)));
-  };
-
-  return (
-    <TabsUnstyled className="container" defaultValue={0} onChange={onChange}>
-      <div className="flex-horizontal">
-        <p id="view-label">View</p>
-        <TabsList>
-          <Tab>Next Stop</Tab>
-          <Tab>Current Trip</Tab>
-        </TabsList>
-      </div>
-      <TabPanel className="cards-container" value={0}>
-        <div tabIndex={-1}>
-          {results.length === 0 ? (
-            <h5
-              style={{
-                textAlign: "center",
-                margin: 0,
-                marginTop: "0.5em",
-                color: "black",
-                padding: "0 1em",
-              }}
-            >
-              Enter a start location to receive suggestions.
-            </h5>
-          ) : (
-            <Results
-              results={results}
-              onSelect={selectResult}
-              addToTrip={addToTrip}
-            />
-          )}
-        </div>
-      </TabPanel>
-      <TabPanel value={1}>
-        <div className="cards-container" tabIndex={-1}>
-          {stops.length === 0 ? (
-            <h5
-              style={{
-                textAlign: "center",
-                margin: 0,
-                marginTop: "0.5em",
-                color: "black",
-                padding: "0 1em",
-              }}
-            >
-              There are no stops in your current trip. You can add one from the
-              "Next Stop" tab.
-            </h5>
-          ) : (
-            <Results results={stops} onSelect={selectStop}></Results>
-          )}
-        </div>
-      </TabPanel>
-    </TabsUnstyled>
-  );
-}

@@ -12,39 +12,49 @@ const InputField = ({
   setUserInput,
   setResults,
 }) => {
-  const input = useInput("");
+  const input = useInput(""); // used to track current input field value
   const [focused, setFocused] = useState(false);
+
+  /***************** Event Callbacks *****************/
 
   const onFocus = () => setFocused(true);
   const onBlur = (e) => {
+    // don't trigger if focus goes to a suggestion
     if (!e.relatedTarget?.classList?.contains("suggestion")) setFocused(false);
   };
 
-  const submit = (e, suggestion) => {
-    // if no specific date provided, use today
-    const date = userInput.date === "" ? new Date() : userInput.date;
-    const newUserInput = { input: suggestion, date: date };
-
-    setUserInput(newUserInput); // update state
-    Search(newUserInput, setResults); // fetch results
-
-    input.setValue(suggestion.place_name); // update inputfield
-    e.target.blur();
-  };
-
+  // callback for "ENTER" on input field
   const onEnter = (e) => {
-    if (e.type === "keydown" && e.key === "Enter") {
+    if (e.type === "keydown" && e.key === "Enter" && input.value !== "") {
       console.log(input.suggestions[0]);
       if (input.suggestions[0] !== undefined) submit(e, input.suggestions[0]);
     }
   };
 
-  const onClick = (e, suggestion) => {
-    console.log(userInput.date);
-    e.stopPropagation(); // prevent selectCard() from calling
-    submit(e, suggestion);
-    setFocused(false);
+  const onSelect = (e, suggestion) => {
+    if (e.type === "click" || e.key === "Enter") {
+      e.stopPropagation(); // prevent the triggering of other events
+      submit(e, suggestion);
+      setFocused(false);
+    }
   };
+
+  const submit = (e, suggestion) => {
+    // if no specific date provided, use today
+    const date = userInput.date === null ? new Date() : userInput.date;
+
+    // update state
+    const newUserInput = { input: suggestion, date: date };
+    setUserInput(newUserInput);
+
+    Search(newUserInput, setResults); // fetch results
+
+    // update inputfield
+    input.setValue(suggestion.place_name);
+    e.target.blur(); // remove focus
+  };
+
+  /******************** Rendering ********************/
 
   return (
     <Wrapper>
@@ -71,12 +81,8 @@ const InputField = ({
                 key={index}
                 tabIndex={0}
                 className="suggestion"
-                onClick={(e) => onClick(e, suggestion)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    onClick(e, suggestion);
-                  }
-                }}
+                onClick={(e) => onSelect(e, suggestion)}
+                onKeyDown={(e) => onSelect(e, suggestion)}
               >
                 {suggestion.place_name}
               </Suggestion>

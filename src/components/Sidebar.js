@@ -50,7 +50,7 @@ export default function Sidebar({
             setResults={setResults}
           />
         </div>
-        <div className="content" id="tab-container">
+        <div className="content" id="tab-container" tabIndex={-1}>
           <Tabs
             results={results}
             selectResult={selectResult}
