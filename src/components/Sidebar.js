@@ -1,7 +1,7 @@
 // libraries
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // components
 import Header from "./Header";
@@ -52,7 +52,7 @@ export default function Sidebar({
             setResults={setResults}
           />
         </div>
-        <div className="content" id="tab-container" tabIndex={-1}>
+        <div className="content scrollbox" id="tab-container" tabIndex={-1}>
           <Tabs
             results={results}
             selectResult={selectResult}
@@ -63,13 +63,13 @@ export default function Sidebar({
           ></Tabs>
           {view === 0 && results.length === 0 && (
             <Message>Enter a start location to receive suggestions.</Message>
-          )} 
+          )}
           {view === 1 && stops.length === 0 && (
             <Message>
               There are no stops in your current trip. You can add one from the
               "Next Stop" tab.
             </Message>
-          )} 
+          )}
         </div>
       </div>
     </Menu>
@@ -85,5 +85,5 @@ const Message = styled.h5`
   left: 50%;
   padding: 0 1em;
   justify-content: center;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 `;
