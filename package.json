@@ -1,5 +1,5 @@
 {
-  "name": "use-mapbox-gl-js-with-react",
+  "name": "rvlife-planner",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.10.5",
     "@mui/base": "^5.0.0-alpha.116",
     "@mui/material": "^5.11.7",
-    "@mui/styled-engine-sc": "^5.11.0",
     "@mui/system": "^5.11.7",
     "@mui/x-date-pickers": "^5.0.16",
     "dayjs": "^1.11.7",
@@ -34,7 +33,7 @@
     "defaults",
     "not ie 11"
   ],
-  "author": "Mapbox",
+  "author": "RVLife: Sri Akash Balu, Kha Do, Rohan Bankala, Prithvidhar Pudu, Joseph Shadrick, Quynh Nguyen",
   "license": "MIT",
   "devDependencies": {
     "eslint-config-react-app": "^7.0.1"

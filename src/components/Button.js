@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import "../css/button.css";
 import { FaPlusCircle } from "react-icons/fa";
 
@@ -25,12 +24,6 @@ const Button = ({ color, text, onClick }) => {
       {text}
     </button>
   );
-};
-
-Button.propTypes = {
-  text: PropTypes.string,
-  color: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 export default Button;

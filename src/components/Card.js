@@ -1,6 +1,3 @@
-// libraries
-import PropTypes from "prop-types";
-
 // components
 import Button from "./Button";
 import Rating from "./Rating";
@@ -16,7 +13,7 @@ const Card = ({
   visited,
   temp,
   id,
-  selected = false,
+  selected,
   onSelect,
   onBtnClick,
 }) => {
@@ -54,11 +51,12 @@ const Card = ({
 export default Card;
 
 Card.defaultProps = {
-  title: "Task Tracker",
-};
-
-Card.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: "Location Name",
+  rating: 5,
+  detour: "0 min.",
+  visited: "0",
+  temp: "0",
+  selected: false,
 };
 
 const isSelected = (selected) => {
