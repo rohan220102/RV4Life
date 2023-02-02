@@ -1,12 +1,14 @@
 :root {
   --red: #fa0644;
   --darkred: #a90000;
+  --lightgrey: #f7f7f7;
   --grey: #f1f2f6;
   --darkgrey: #a6a6a6;
   --mediumgrey: #cacacb;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--darkgrey);
 }
 
