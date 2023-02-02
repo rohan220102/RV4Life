@@ -20,7 +20,6 @@ export default function Tabs({
   selectStop,
   setStops,
   onChange,
-  message,
 }) {
   // callback for clicking the "Add" button in the Next Stop tab
   const addToTrip = (e, id) => {
@@ -39,20 +38,9 @@ export default function Tabs({
         </TabsList>
       </div>
       <TabPanel className="cards-container" value={0}>
-        <p>{message}</p>
         <div tabIndex={-1}>
           {results.length === 0 ? (
-            <h5
-              style={{
-                textAlign: "center",
-                margin: 0,
-                marginTop: "0.5em",
-                color: "black",
-                padding: "0 1em",
-              }}
-            >
-              Enter a start location to receive suggestions.
-            </h5>
+            <Message>Enter a start location to receive suggestions.</Message>
           ) : (
             <Results
               results={results}
@@ -65,18 +53,10 @@ export default function Tabs({
       <TabPanel value={1}>
         <div className="cards-container" tabIndex={-1}>
           {stops.length === 0 ? (
-            <h5
-              style={{
-                textAlign: "center",
-                margin: 0,
-                marginTop: "0.5em",
-                color: "black",
-                padding: "0 1em",
-              }}
-            >
+            <Message>
               There are no stops in your current trip. You can add one from the
               "Next Stop" tab.
-            </h5>
+            </Message>
           ) : (
             <Results results={stops} onSelect={selectStop}></Results>
           )}
@@ -98,6 +78,14 @@ const grey = {
   800: "#32383f",
   900: "#24292f",
 };
+
+const Message = styled.h5`
+  textAlign: "center",
+  margin: 0,
+  marginTop: "0.5em",
+  color: "black",
+  padding: "0 1em",
+`;
 
 const Tab = styled(TabUnstyled)`
   box-sizing: border-box;
