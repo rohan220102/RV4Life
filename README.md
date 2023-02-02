@@ -1,4 +1,4 @@
-## RVLife Planner (Frontend)
+## RVLife Planner (Full-Stack)
 
 #### Description:
 
@@ -19,7 +19,11 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 ### !!! IMPORTANT !!!
 
-#### Before executing the following steps, cd INTO the frontend/ directory.
+#### You must set up the frontend and backend SEPARATELY in their respective directories.
+
+#### Frontend Setup:
+
+Navigate INTO the /frontend directory.
 
 To Install Dependencies:
 
@@ -32,6 +36,12 @@ To Start Server:
 To Visit App:
 
 `localhost:3000`
+
+#### Backend Setup:
+
+Navigate INTO the /backend directory.
+
+Backend is still in development.
 
 ## Usage
 
