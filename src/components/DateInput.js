@@ -1,13 +1,16 @@
-import * as React from "react";
-import { useState, useRef } from "react";
-import dayjs from "dayjs";
+// libraries
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
-import "../css/dateInput.css";
+
+// components
 import Search from "../search";
+
+// styles
+import "../css/dateInput.css";
 
 export default function DateInput({ userInput, setUserInput, setResults }) {
   const [date, setDate] = useState(null);

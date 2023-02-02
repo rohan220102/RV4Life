@@ -1,9 +1,14 @@
-import React, { Component } from "react";
-import Button from "./Button.js";
-import "../css/card.css";
-import colors from "../colors.js";
+// libraries
+import React from "react";
 import PropTypes from "prop-types";
-import Rating from "./Rating.js";
+
+// components
+import Button from "./Button";
+import Rating from "./Rating";
+
+// styles
+import "../css/card.css";
+import colors from "../colors";
 
 const Card = ({
   title,

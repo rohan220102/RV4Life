@@ -24,7 +24,7 @@ export default function Sidebar({
 }) {
   console.log("Rendering sidebar");
   const [message, setMessage] = useState("");
-  const [userInput, setUserInput] = useState({ input: {}, date: "" });
+  const [userInput, setUserInput] = useState({ input: {}, date: null });
 
   const handleTabChange = (event, newTab) => {
     setView(newTab);
