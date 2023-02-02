@@ -1,7 +1,12 @@
+// libraries
 import { useState } from "react";
 import styled from "styled-components";
+
+// components
 import Search from "../search";
-import useInput from "./useInput.js";
+import useInput from "./useInput";
+
+// styles
 import "../css/inputField.css";
 
 const InputField = ({
@@ -17,7 +22,7 @@ const InputField = ({
 
   /***************** Event Callbacks *****************/
 
-  const onFocus = () => setFocused(true);
+  const onFocus = () => setFocused(true); // focus on input field
   const onBlur = (e) => {
     // don't trigger if focus goes to a suggestion
     if (!e.relatedTarget?.classList?.contains("suggestion")) setFocused(false);
@@ -31,6 +36,7 @@ const InputField = ({
     }
   };
 
+  // callback for selecting a suggestion from the dropdown
   const onSelect = (e, suggestion) => {
     if (e.type === "click" || e.key === "Enter") {
       e.stopPropagation(); // prevent the triggering of other events
@@ -39,6 +45,7 @@ const InputField = ({
     }
   };
 
+  // submit input to search function
   const submit = (e, suggestion) => {
     // if no specific date provided, use today
     const date = userInput.date === null ? new Date() : userInput.date;
@@ -49,7 +56,7 @@ const InputField = ({
 
     Search(newUserInput, setResults); // fetch results
 
-    // update inputfield
+    // update input field to reflect selection
     input.setValue(suggestion.place_name);
     e.target.blur(); // remove focus
   };
