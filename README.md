@@ -1,4 +1,4 @@
-## RVLife Planner (Full-Stack)
+## RVLife Planner
 
 #### Description:
 
@@ -10,8 +10,8 @@ This project is currently in development. Users can navigate around the map (via
 
 ## Project Screen Shots
 
-![Image of landing page](./src/media/screenshot1.png)
-![Image showing search result functionality](./src/media/screenshot2.png)
+![Image of landing page](./img/screenshot1.png)
+![Image showing search result functionality](./img/screenshot2.png)
 
 ## Installation and Setup Instructions
 
@@ -21,7 +21,7 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 #### You must set up the frontend and backend SEPARATELY in their respective directories.
 
-#### Frontend Setup:
+### Frontend Setup:
 
 Navigate INTO the /frontend directory.
 
@@ -37,7 +37,7 @@ To Visit App:
 
 `localhost:3000`
 
-#### Backend Setup:
+### Backend Setup:
 
 Navigate INTO the /backend directory.
 
