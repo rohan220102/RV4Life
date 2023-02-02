@@ -1,8 +1,12 @@
-import "../css/searchBar.css";
+// components
 import InputField from "./InputField";
 import DateInput from "./DateInput";
 import PinIcon from "../media/pin1.png";
 
+// styles
+import "../css/searchBar.css";
+
+// the search bar component
 const SearchBar = ({ userInput, setUserInput, setResults, setMessage }) => {
   return (
     <div id="searchbar">

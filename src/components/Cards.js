@@ -1,5 +1,11 @@
 import Card from "./Card";
 
+/* displays a list of card components
+ * arguments:
+ *   - data: array of data objects (see getResults.js)
+ *   - onSelect: callback function for when a card is selected
+ *   - onBtnClick: callback function for when the button is clicked
+ */
 const Cards = ({ data, onSelect, onBtnClick }) => {
   return (
     <>

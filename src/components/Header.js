@@ -1,5 +1,6 @@
 import "../css/header.css";
 
+// header component that shows logo
 const Header = () => {
   return (
     <div className="topnav" tabIndex={-1}>

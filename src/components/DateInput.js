@@ -1,5 +1,5 @@
 // libraries
-import React, { useState } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -15,6 +15,8 @@ import "../css/dateInput.css";
 export default function DateInput({ userInput, setUserInput, setResults }) {
   const [date, setDate] = useState(null);
   const [focused, setFocused] = useState(false);
+
+  /***************** Event Callbacks *****************/
 
   const onFocus = (e) => {
     console.log(e.target.getValue);
@@ -42,6 +44,8 @@ export default function DateInput({ userInput, setUserInput, setResults }) {
       console.log("No user input location");
     }
   };
+
+  /******************** Rendering ********************/
 
   return (
     <Wrapper focused={focused}>

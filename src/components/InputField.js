@@ -9,6 +9,7 @@ import useInput from "./useInput";
 // styles
 import "../css/inputField.css";
 
+// the input field component
 const InputField = ({
   icon,
   placeholder,
@@ -50,9 +51,8 @@ const InputField = ({
     // if no specific date provided, use today
     const date = userInput.date === null ? new Date() : userInput.date;
 
-    // update state
     const newUserInput = { input: suggestion, date: date };
-    setUserInput(newUserInput);
+    setUserInput(newUserInput); // update state
 
     Search(newUserInput, setResults); // fetch results
 

@@ -1,6 +1,4 @@
 // libraries
-import React from "react";
-import styled from "styled-components";
 import { styled as muiStyled } from "@mui/system";
 import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import TabsUnstyled from "@mui/base/TabsUnstyled";
@@ -39,14 +37,10 @@ export default function Tabs({
         </TabsList>
       </div>
       <TabPanel className="cards-container" value={0}>
-        <Cards
-          data={results}
-          onSelect={selectResult}
-          onBtnClick={addToTrip}
-        />
+        <Cards data={results} onSelect={selectResult} onBtnClick={addToTrip} />
       </TabPanel>
       <TabPanel className="cards-container" value={1}>
-            <Cards data={stops} onSelect={selectStop} />
+        <Cards data={stops} onSelect={selectStop} />
       </TabPanel>
     </TabsUnstyled>
   );
