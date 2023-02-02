@@ -16,11 +16,10 @@ import "../css/sidebar.css";
 export default function Sidebar({
   results,
   setResults,
+  selectResult,
   stops,
   setStops,
-  selectResult,
   selectStop,
-  addToTrip,
   setView,
 }) {
   console.log("Rendering sidebar");
@@ -55,9 +54,9 @@ export default function Sidebar({
           <Tabs
             results={results}
             selectResult={selectResult}
-            addToTrip={addToTrip}
             stops={stops}
             selectStop={selectStop}
+            setStops={setStops}
             onChange={handleTabChange}
           ></Tabs>
         </div>

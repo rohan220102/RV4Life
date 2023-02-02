@@ -43,13 +43,6 @@ export default function App() {
     );
   };
 
-  // callback for clicking the "Add" button in the Next Stop tab
-  const addToTrip = (e, id) => {
-    console.log("Adding card #" + id + " to trip");
-    e.stopPropagation(); // prevent selectResult() from calling
-    setStops(stops.concat(results.filter((result) => result.id == id)));
-  };
-
   /*********************** MapBox ***********************/
 
   const mapContainer = useRef(null);
@@ -142,7 +135,6 @@ export default function App() {
         stops={stops}
         setStops={setStops}
         selectStop={selectStop}
-        addToTrip={addToTrip}
         setView={setView}
       />
       <div ref={mapContainer} className="map-container" />

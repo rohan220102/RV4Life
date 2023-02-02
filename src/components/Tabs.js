@@ -8,19 +8,6 @@ import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import Results from "./Results";
 import "../css/tabs.css";
 
-const blue = {
-  50: "#F0F7FF",
-  100: "#C2E0FF",
-  200: "#80BFFF",
-  300: "#66B2FF",
-  400: "#3399FF",
-  500: "#007FFF",
-  600: "#0072E5",
-  700: "#0059B2",
-  800: "#004C99",
-  900: "#003A75",
-};
-
 const grey = {
   50: "#f6f8fa",
   100: "#eaeef2",
@@ -92,11 +79,18 @@ const TabsList = styled(TabsListUnstyled)(
 export default function Tabs({
   results,
   selectResult,
-  addToTrip,
   stops,
   selectStop,
+  setStops,
   onChange,
 }) {
+  // callback for clicking the "Add" button in the Next Stop tab
+  const addToTrip = (e, id) => {
+    console.log("Adding card #" + id + " to trip");
+    e.stopPropagation(); // prevent selectResult() from calling
+    setStops(stops.concat(results.filter((result) => result.id == id)));
+  };
+
   return (
     <TabsUnstyled className="container" defaultValue={0} onChange={onChange}>
       <div className="flex-horizontal">
