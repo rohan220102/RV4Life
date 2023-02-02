@@ -23,15 +23,11 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 ### Frontend Setup:
 
-Navigate INTO the frontend/ directory.
-
-Then, follow these [steps to set up the frontend](/frontend/README.md "Frontend setup").
+Navigate INTO the frontend/ directory. Then, follow these [steps to set up the frontend](/frontend/README.md "Frontend setup").
 
 ### Backend Setup:
 
-Navigate INTO the backend/ directory.
-
-Then, follow these [steps to set up the backend](/backend/README.md "Frontend setup").
+Navigate INTO the backend/ directory. Then, follow these [steps to set up the backend](/backend/README.md "Backend setup").
 
 ## Usage
 
