@@ -97,61 +97,57 @@ export default function Tabs({
   selectStop,
 }) {
   return (
-    <>
-      <TabsUnstyled className="box" defaultValue={0}>
-        <div className="flex-horizontal head">
-          <p id="view-label">View</p>
-          <TabsList>
-            <Tab>Next Stop</Tab>
-            <Tab>Current Trip</Tab>
-          </TabsList>
+    <TabsUnstyled className="container" defaultValue={0}>
+      <div className="flex-horizontal">
+        <p id="view-label">View</p>
+        <TabsList>
+          <Tab>Next Stop</Tab>
+          <Tab>Current Trip</Tab>
+        </TabsList>
+      </div>
+      <TabPanel className="cards-container" value={0}>
+        <div tabIndex={-1}>
+          {results.length === 0 ? (
+            <h5
+              style={{
+                textAlign: "center",
+                margin: 0,
+                marginTop: "0.5em",
+                color: "black",
+                padding: "0 1em",
+              }}
+            >
+              Enter a start location to receive suggestions.
+            </h5>
+          ) : (
+            <Results
+              results={results}
+              onSelect={selectResult}
+              addToTrip={addToTrip}
+            />
+          )}
         </div>
-        <div className="content" id="scroll-container" tabIndex={-1}>
-          <TabPanel id="result-container" value={0}>
-            <div tabIndex={-1}>
-              {results.length === 0 ? (
-                <h5
-                  style={{
-                    textAlign: "center",
-                    margin: 0,
-                    marginTop: "0.5em",
-                    color: "black",
-                    padding: "0 1em",
-                  }}
-                >
-                  Enter a start location to receive suggestions.
-                </h5>
-              ) : (
-                <Results
-                  results={results}
-                  onSelect={selectResult}
-                  addToTrip={addToTrip}
-                />
-              )}
-            </div>
-          </TabPanel>
-          <TabPanel value={1}>
-            <div id="result-container" tabIndex={-1}>
-              {stops.length === 0 ? (
-                <h5
-                  style={{
-                    textAlign: "center",
-                    margin: 0,
-                    marginTop: "0.5em",
-                    color: "black",
-                    padding: "0 1em",
-                  }}
-                >
-                  There are no stops in your current trip. You can add one from
-                  the "Next Stop" tab.
-                </h5>
-              ) : (
-                <Results results={stops} onSelect={selectStop}></Results>
-              )}
-            </div>
-          </TabPanel>
+      </TabPanel>
+      <TabPanel value={1}>
+        <div className="cards-container" tabIndex={-1}>
+          {stops.length === 0 ? (
+            <h5
+              style={{
+                textAlign: "center",
+                margin: 0,
+                marginTop: "0.5em",
+                color: "black",
+                padding: "0 1em",
+              }}
+            >
+              There are no stops in your current trip. You can add one from the
+              "Next Stop" tab.
+            </h5>
+          ) : (
+            <Results results={stops} onSelect={selectStop}></Results>
+          )}
         </div>
-      </TabsUnstyled>
-    </>
+      </TabPanel>
+    </TabsUnstyled>
   );
 }

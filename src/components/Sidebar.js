@@ -42,7 +42,6 @@ export default function Sidebar({
 
   return (
     <Menu
-      id={"sidebar"}
       noOverlay
       isOpen={true}
       width={"23em"}
@@ -51,23 +50,25 @@ export default function Sidebar({
       tabIndex={-1}
       disableAutoFocus
     >
-      <div id="search-container" tabIndex={-1}>
-        <Header />
-        <ColoredLine color="var(--grey)" tabIndex={-1} />
-        <SearchBar
-          userInput={userInput}
-          setUserInput={setUserInput}
-          setResults={setResults}
-        />
-      </div>
-      <div id="tab-container">
-        <Tabs
-          results={results}
-          selectResult={selectResult}
-          addToTrip={addToTrip}
-          stops={stops}
-          selectStop={selectStop}
-        ></Tabs>
+      <div className="box" tabIndex={-1}>
+        <div className="head" id="search-container" tabIndex={-1}>
+          <Header />
+          <ColoredLine color="var(--grey)" tabIndex={-1} />
+          <SearchBar
+            userInput={userInput}
+            setUserInput={setUserInput}
+            setResults={setResults}
+          />
+        </div>
+        <div className="content" id="tab-container">
+          <Tabs
+            results={results}
+            selectResult={selectResult}
+            addToTrip={addToTrip}
+            stops={stops}
+            selectStop={selectStop}
+          ></Tabs>
+        </div>
       </div>
     </Menu>
   );
