@@ -1,20 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
-import Sidebar from "./components/Sidebar";
-import Map from "./components/Map";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import "./css/map.css";
+
+import Sidebar from "./components/Sidebar";
 import colors from "./colors.js";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig";
 
 export default function App() {
+  // state data for cards and markers
   const [results, setResults] = useState([]);
   const [stops, setStops] = useState([]);
-  const [view, setView] = useState(0);
+  const [view, setView] = useState(0); //
 
   console.log("Rendering application");
 
+  // set a Data object as selected when a card/marker is clicked
   const selectResult = (id) => {
     console.log("Selected result #" + id);
     setResults(
@@ -26,6 +27,7 @@ export default function App() {
     );
   };
 
+  // set a Data object as selected when a card/marker is clicked
   const selectStop = (id) => {
     console.log("Selected stop #" + id);
     setStops(
@@ -37,6 +39,7 @@ export default function App() {
     );
   };
 
+  // callback for clicking the "Add" button in the Next Stop tab
   const addToTrip = (e, id) => {
     console.log("Adding card #" + id + " to trip");
     e.stopPropagation(); // prevent selectResult() from calling
@@ -49,6 +52,8 @@ export default function App() {
   const [lng, setLng] = useState(-110.11302);
   const [lat, setLat] = useState(40.63333);
   const [zoom, setZoom] = useState(3);
+
+  // reference to the actual markers on the map
   const [markers, setMarkers] = useState([]);
 
   // initiate map upon first launch
@@ -87,6 +92,7 @@ export default function App() {
     view == 0 ? [results] : [stops]
   );
 
+  // takes in an array of Data and plots them as markers on the map
   const addMarkers = (results) => {
     for (const marker of markers) marker.remove();
     const newMarkers = [];

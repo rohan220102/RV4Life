@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import "../css/InputField.css";
-import useInput from "./useInput.js";
 import Search from "../search";
-import dayjs from "dayjs";
+import useInput from "./useInput.js";
+import "../css/inputField.css";
 
 const InputField = ({
   icon,
