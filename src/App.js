@@ -135,6 +135,7 @@ export default function App() {
         stops={stops}
         setStops={setStops}
         selectStop={selectStop}
+        view={view}
         setView={setView}
       />
       <div ref={mapContainer} className="map-container" />

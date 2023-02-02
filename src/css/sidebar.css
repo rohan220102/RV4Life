@@ -88,4 +88,5 @@
 .content {
   border: none;
   overflow-y: scroll;
+  flex: 1 1 auto;
 }

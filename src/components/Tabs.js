@@ -1,6 +1,7 @@
 // libraries
 import React from "react";
-import { styled } from "@mui/system";
+import styled from "styled-components";
+import { styled as muiStyled } from "@mui/system";
 import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 import TabsUnstyled from "@mui/base/TabsUnstyled";
 import TabsListUnstyled from "@mui/base/TabsListUnstyled";
@@ -8,7 +9,7 @@ import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
 
 // components
-import Results from "./Results";
+import Cards from "./Cards";
 
 // styles
 import "../css/tabs.css";
@@ -38,29 +39,14 @@ export default function Tabs({
         </TabsList>
       </div>
       <TabPanel className="cards-container" value={0}>
-        <div tabIndex={-1}>
-          {results.length === 0 ? (
-            <Message>Enter a start location to receive suggestions.</Message>
-          ) : (
-            <Results
-              results={results}
-              onSelect={selectResult}
-              addToTrip={addToTrip}
-            />
-          )}
-        </div>
+        <Cards
+          data={results}
+          onSelect={selectResult}
+          onBtnClick={addToTrip}
+        />
       </TabPanel>
-      <TabPanel value={1}>
-        <div className="cards-container" tabIndex={-1}>
-          {stops.length === 0 ? (
-            <Message>
-              There are no stops in your current trip. You can add one from the
-              "Next Stop" tab.
-            </Message>
-          ) : (
-            <Results results={stops} onSelect={selectStop}></Results>
-          )}
-        </div>
+      <TabPanel className="cards-container" value={1}>
+            <Cards data={stops} onSelect={selectStop} />
       </TabPanel>
     </TabsUnstyled>
   );
@@ -79,15 +65,7 @@ const grey = {
   900: "#24292f",
 };
 
-const Message = styled.h5`
-  textAlign: "center",
-  margin: 0,
-  marginTop: "0.5em",
-  color: "black",
-  padding: "0 1em",
-`;
-
-const Tab = styled(TabUnstyled)`
+const Tab = muiStyled(TabUnstyled)`
   box-sizing: border-box;
   color: var(--darkgrey);
   cursor: pointer;
@@ -120,14 +98,14 @@ const Tab = styled(TabUnstyled)`
   }
 `;
 
-const TabPanel = styled(TabPanelUnstyled)`
+const TabPanel = muiStyled(TabPanelUnstyled)`
   width: 100%;
   box-sizing: border-box;
   font-family: IBM Plex Sans, sans-serif;
   font-size: 14px;
 `;
 
-const TabsList = styled(TabsListUnstyled)(
+const TabsList = muiStyled(TabsListUnstyled)(
   ({ theme }) => `
   background-color: var(--grey);
   border-radius: 4px;

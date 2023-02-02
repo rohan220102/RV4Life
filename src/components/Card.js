@@ -19,7 +19,7 @@ const Card = ({
   id,
   selected = false,
   onSelect,
-  onAdd,
+  onBtnClick,
 }) => {
   return (
     <div
@@ -33,7 +33,7 @@ const Card = ({
           <Rating rating={rating} />
         </div>
         <Button
-          onClick={(e) => onAdd(e, id)}
+          onClick={(e) => onBtnClick(e, id)}
           className="btn"
           color={colors.primary}
           text="Add"
