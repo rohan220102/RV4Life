@@ -35,10 +35,10 @@ const Card = ({
         />
       </header>
       <span className="card-value">
-        {detour} <span className="card-description">detour</span>
+        {detour} <span className="card-description sp">detour</span>
       </span>
       <span className="card-value">
-        {visited} <span className="card-description">visited</span>
+        {visited} <span className="card-description sp">visited</span>
       </span>
       <span className="card-value">
         {temp} <span className="card-description">average temp.</span>

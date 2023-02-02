@@ -45,6 +45,9 @@ span {
   font-weight: normal;
   color: var(--darkgrey);
   margin: 0;
+}
+
+.card-description.sp {
   margin-right: 1em;
 }
 
