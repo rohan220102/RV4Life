@@ -102,25 +102,48 @@ export default function Tabs({
         <div className="flex-horizontal head">
           <p id="view-label">View</p>
           <TabsList>
-            <Tab>Next Stops</Tab>
+            <Tab>Next Stop</Tab>
             <Tab>Current Trip</Tab>
           </TabsList>
         </div>
         <div className="content" id="scroll-container" tabIndex={-1}>
-          <TabPanel value={0}>
-            <div id="result-container" tabIndex={-1}>
-              <Results
-                results={results}
-                onSelect={selectResult}
-                addToTrip={addToTrip}
-              />
+          <TabPanel id="result-container" value={0}>
+            <div tabIndex={-1}>
+              {results.length === 0 ? (
+                <h5
+                  style={{
+                    textAlign: "center",
+                    margin: 0,
+                    marginTop: "0.5em",
+                    color: "black",
+                    padding: "0 1em",
+                  }}
+                >
+                  Enter a start location to receive suggestions.
+                </h5>
+              ) : (
+                <Results
+                  results={results}
+                  onSelect={selectResult}
+                  addToTrip={addToTrip}
+                />
+              )}
             </div>
           </TabPanel>
           <TabPanel value={1}>
             <div id="result-container" tabIndex={-1}>
               {stops.length === 0 ? (
-                <h5 style={{ margin: 0, marginTop: "0.5em", color: "black" }}>
-                  You have no stops in your current trip.
+                <h5
+                  style={{
+                    textAlign: "center",
+                    margin: 0,
+                    marginTop: "0.5em",
+                    color: "black",
+                    padding: "0 1em",
+                  }}
+                >
+                  There are no stops in your current trip. You can add one from
+                  the "Next Stop" tab.
                 </h5>
               ) : (
                 <Results results={stops} onSelect={selectStop}></Results>

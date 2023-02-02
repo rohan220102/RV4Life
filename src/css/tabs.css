@@ -5,7 +5,6 @@
 
 #scroll-container {
   border: none;
-  overflow-y: scroll;
 }
 
 #result-container {
@@ -17,7 +16,7 @@
   font-weight: bold;
   font-size: 10px;
   color: var(--darkgrey);
-  top: 23%;
+  margin-top: 5px;
   position: relative;
   margin-right: 0.8em;
 }
@@ -29,8 +28,6 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: white;
   overflow: auto;
 }
@@ -44,10 +41,9 @@
 .head {
   border: none;
   flex-shrink: 0;
-  padding: 0 1em 0.7em 1em;
+  padding: 0 1em 0em 1em;
   margin-right: 5px;
-  box-shadow: -5px 10px 10px var(--grey);
-  z-index: 100;
+  z-index: 10;
 }
 
 .content {
