@@ -35,5 +35,8 @@
     "not ie 11"
   ],
   "author": "Mapbox",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
+  }
 }
