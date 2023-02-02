@@ -95,9 +95,10 @@ export default function Tabs({
   addToTrip,
   stops,
   selectStop,
+  onChange,
 }) {
   return (
-    <TabsUnstyled className="container" defaultValue={0}>
+    <TabsUnstyled className="container" defaultValue={0} onChange={onChange}>
       <div className="flex-horizontal">
         <p id="view-label">View</p>
         <TabsList>

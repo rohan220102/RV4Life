@@ -51,6 +51,7 @@ export default function App() {
   };
 
   /*********************** MapBox ***********************/
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-110.11302);

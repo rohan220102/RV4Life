@@ -27,8 +27,8 @@ export default function Sidebar({
   const [message, setMessage] = useState("");
   const [userInput, setUserInput] = useState({ input: {}, date: "" });
 
-  const handleChange = (event) => {
-    setMessage(event.target.value);
+  const handleTabChange = (event, newTab) => {
+    setView(newTab);
   };
 
   return (
@@ -58,6 +58,7 @@ export default function Sidebar({
             addToTrip={addToTrip}
             stops={stops}
             selectStop={selectStop}
+            onChange={handleTabChange}
           ></Tabs>
         </div>
       </div>
