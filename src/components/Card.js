@@ -64,9 +64,3 @@ const isSelected = (selected) => {
   }
   return className;
 };
-
-// CSS in JS
-// const headingStyle = {
-//   color: 'red',
-//   backgroundColor: 'black',
-// }
