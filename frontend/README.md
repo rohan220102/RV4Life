@@ -10,8 +10,8 @@ This project is currently in development. Users can navigate around the map (via
 
 ## Project Screen Shots
 
-![Image of landing page](/src/media/screenshot1.png)
-![Image showing search result functionality](/src/media/screenshot2.png)
+![Image of landing page](./src/media/screenshot1.png)
+![Image showing search result functionality](./src/media/screenshot2.png)
 
 ## Installation and Setup Instructions
 
