@@ -22,7 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://uta-2022-bucket"
   },
   "eslintConfig": {
     "extends": [
