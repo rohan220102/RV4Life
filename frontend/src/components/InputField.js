@@ -159,6 +159,7 @@ const Suggestion = styled.p`
   display: ${(props) => (props.focused ? "block" : "none")};
   cursor: pointer;
   color: black;
+  font-size: 13px;
   box-sizing: border-box;
   width: 100%;
   padding: 10px 12px 10px 12px;
