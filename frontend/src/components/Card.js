@@ -1,3 +1,6 @@
+// libraries
+import { useState } from "react";
+
 // components
 import Button from "./Button";
 import Rating from "./Rating";
@@ -17,10 +20,14 @@ const Card = ({
   onSelect,
   onBtnClick,
 }) => {
+  const [showAddBtn, setShowAddBtn] = useState(false);
+
   return (
     <div
       className={isSelected(selected)}
       onClick={() => onSelect(id)}
+      onMouseEnter={() => setShowAddBtn(true)}
+      onMouseLeave={() => setShowAddBtn(false)}
       tabIndex={-1}
     >
       <header className="header">
@@ -33,6 +40,7 @@ const Card = ({
           className="btn"
           color={colors.primary}
           text="Add"
+          style={{ visibility: showAddBtn ? "visible" : "hidden" }}
         />
       </header>
       <span className="card-value">
