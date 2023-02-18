@@ -6,3 +6,8 @@
 .suggestion:hover {
   background: var(--grey);
 }
+
+::placeholder {
+  color: var(--darkgrey);
+  opacity: 1;
+}

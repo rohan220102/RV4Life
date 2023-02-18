@@ -119,7 +119,7 @@ const TabsList = muiStyled(TabsListUnstyled)(
   ({ theme }) => `
   background-color: var(--grey);
   border-radius: 4px;
-  width: 43%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
