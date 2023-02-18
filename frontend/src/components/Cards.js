@@ -6,7 +6,7 @@ import Card from "./Card";
  *   - onSelect: callback function for when a card is selected
  *   - onBtnClick: callback function for when the button is clicked
  */
-const Cards = ({ data, onSelect, onBtnClick }) => {
+const Cards = ({ data, onSelect, onBtnClick, btnText }) => {
   return (
     <>
       {data.map(({ id, title, rating, detour, visited, temp, selected }) => (
@@ -21,6 +21,7 @@ const Cards = ({ data, onSelect, onBtnClick }) => {
           selected={selected}
           onSelect={onSelect}
           onBtnClick={onBtnClick}
+          btnText={btnText}
         />
       ))}
     </>

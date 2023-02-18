@@ -27,6 +27,12 @@ export default function Tabs({
     setStops(stops.concat(results.filter((result) => result.id == id)));
   };
 
+  const removeStop = (e, id) => {
+    console.log("Removing card #" + id + " from trip");
+    e.stopPropagation(); // prevent selectResult() from calling
+    setStops(stops.filter((stop) => stop.id !== id));
+  };
+
   return (
     <TabsUnstyled className="container" defaultValue={0} onChange={onChange}>
       <div className="flex-horizontal">
@@ -37,10 +43,20 @@ export default function Tabs({
         </TabsList>
       </div>
       <TabPanel className="cards-container" value={0}>
-        <Cards data={results} onSelect={selectResult} onBtnClick={addToTrip} />
+        <Cards
+          data={results}
+          onSelect={selectResult}
+          onBtnClick={addToTrip}
+          btnText="Add"
+        />
       </TabPanel>
       <TabPanel className="cards-container" value={1}>
-        <Cards data={stops} onSelect={selectStop} />
+        <Cards
+          data={stops}
+          onSelect={selectStop}
+          onBtnClick={removeStop}
+          btnText="Delete"
+        />
       </TabPanel>
     </TabsUnstyled>
   );

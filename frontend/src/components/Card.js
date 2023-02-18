@@ -19,6 +19,7 @@ const Card = ({
   selected,
   onSelect,
   onBtnClick,
+  btnText,
 }) => {
   const [showAddBtn, setShowAddBtn] = useState(false);
 
@@ -39,7 +40,7 @@ const Card = ({
           onClick={(e) => onBtnClick(e, id)}
           className="btn"
           color={colors.primary}
-          text="Add"
+          text={btnText}
           style={{ visibility: showAddBtn ? "visible" : "hidden" }}
         />
       </header>
