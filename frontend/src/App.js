@@ -24,7 +24,7 @@ export default function App() {
     console.log("Selected result #" + id);
     setResults(
       results.map((result) =>
-        result.id === id
+        result.id === parseInt(id)
           ? { ...result, selected: true }
           : { ...result, selected: false }
       )
@@ -36,7 +36,7 @@ export default function App() {
     console.log("Selected stop #" + id);
     setStops(
       stops.map((stop) =>
-        stop.id === id
+        stop.id === parseInt(id)
           ? { ...stop, selected: true }
           : { ...stop, selected: false }
       )
