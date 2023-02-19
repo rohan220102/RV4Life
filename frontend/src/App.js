@@ -13,8 +13,14 @@ mapboxgl.accessToken =
 
 export default function App() {
   // state data for cards and markers
-  const [results, setResults] = useState([]);
-  const [stops, setStops] = useState([]);
+  const [results, setResults] = useState({
+    type: "FeatureCollection",
+    features: [],
+  });
+  const [stops, setStops] = useState({
+    type: "FeatureCollection",
+    features: [],
+  });
   const [view, setView] = useState(0); //
 
   console.log("Rendering application");
@@ -22,25 +28,27 @@ export default function App() {
   // set a Data object as selected when a card/marker is clicked
   const selectResult = (id) => {
     console.log("Selected result #" + id);
-    setResults(
-      results.map((result) =>
-        result.id === parseInt(id)
-          ? { ...result, selected: true }
-          : { ...result, selected: false }
-      )
-    );
+    setResults({
+      ...results,
+      features: results.features.map((feat) =>
+        feat.properties.id === parseInt(id)
+          ? { ...feat, properties: { ...feat.properties, selected: true } }
+          : { ...feat, properties: { ...feat.properties, selected: false } }
+      ),
+    });
   };
 
   // set a Data object as selected when a card/marker is clicked
   const selectStop = (id) => {
     console.log("Selected stop #" + id);
-    setStops(
-      stops.map((stop) =>
-        stop.id === parseInt(id)
-          ? { ...stop, selected: true }
-          : { ...stop, selected: false }
-      )
-    );
+    setStops({
+      ...stops,
+      features: stops.features.map((feat) =>
+        feat.properties.id === parseInt(id)
+          ? { ...feat, properties: { ...feat.properties, selected: true } }
+          : { ...feat, properties: { ...feat.properties, selected: false } }
+      ),
+    });
   };
 
   /*********************** MapBox ***********************/
@@ -89,13 +97,13 @@ export default function App() {
   });
 
   // update markers depending on which tab view you're in
-  useEffect(
-    () => {
-      console.log("Updating markers");
-      view === 0 ? addMarkers(results) : addMarkers(stops);
-    },
-    view === 0 ? [results] : [stops]
-  );
+  // useEffect(
+  //   () => {
+  //     console.log("Updating markers");
+  //     view === 0 ? addMarkers(results) : addMarkers(stops);
+  //   },
+  //   view === 0 ? [results] : [stops]
+  // );
 
   // takes in an array of Data and plots them as markers on the map
   const addMarkers = (results) => {

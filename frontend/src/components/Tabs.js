@@ -24,13 +24,21 @@ export default function Tabs({
   const addToTrip = (e, id) => {
     console.log("Adding card #" + id + " to trip");
     e.stopPropagation(); // prevent selectResult() from calling
-    setStops(stops.concat(results.filter((result) => result.id == id)));
+    setStops({
+      ...stops,
+      features: stops.features.concat(
+        results.features.filter((result) => result.properties.id == id)
+      ),
+    });
   };
 
   const removeStop = (e, id) => {
     console.log("Removing card #" + id + " from trip");
     e.stopPropagation(); // prevent selectResult() from calling
-    setStops(stops.filter((stop) => stop.id !== id));
+    setStops({
+      ...stops,
+      features: stops.features.filter((stop) => stop.properties.id !== id),
+    });
   };
 
   return (

@@ -6,8 +6,14 @@ mapboxgl.accessToken =
 
 // this function should fetch and maybe process the results
 export default function search(input, setResults) {
-  console.log(input);
+  // console.log(input);
 
-  const results = getResults(input);
-  setResults(results);
+  // const results = getResults(input);
+  // const results = JSON.parse(res);
+  fetch(
+    "https://raw.githubusercontent.com/quynh16/quynh16.github.io/main/results.json"
+  )
+    .then((response) => response.json())
+    .then((json) => setResults(json));
+  // setResults(results);
 }

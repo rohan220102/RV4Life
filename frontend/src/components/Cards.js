@@ -9,21 +9,26 @@ import Card from "./Card";
 const Cards = ({ data, onSelect, onBtnClick, btnText }) => {
   return (
     <>
-      {data.map(({ id, title, rating, detour, visited, temp, selected }) => (
-        <Card
-          key={id}
-          title={title}
-          rating={rating}
-          detour={detour}
-          visited={visited}
-          temp={temp}
-          id={id}
-          selected={selected}
-          onSelect={onSelect}
-          onBtnClick={onBtnClick}
-          btnText={btnText}
-        />
-      ))}
+      {data.features.length !== 0 &&
+        data.features.map(
+          ({
+            properties: { id, title, rating, detour, visited, temp, selected },
+          }) => (
+            <Card
+              key={id}
+              title={title}
+              rating={rating}
+              detour={detour}
+              visited={visited}
+              temp={temp}
+              id={id}
+              selected={selected}
+              onSelect={onSelect}
+              onBtnClick={onBtnClick}
+              btnText={btnText}
+            />
+          )
+        )}
     </>
   );
 };
