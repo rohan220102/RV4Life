@@ -24,7 +24,7 @@ export default function App() {
     console.log("Selected result #" + id);
     setResults(
       results.map((result) =>
-        result.id == id
+        result.id === id
           ? { ...result, selected: true }
           : { ...result, selected: false }
       )
@@ -36,7 +36,7 @@ export default function App() {
     console.log("Selected stop #" + id);
     setStops(
       stops.map((stop) =>
-        stop.id == id
+        stop.id === id
           ? { ...stop, selected: true }
           : { ...stop, selected: false }
       )
@@ -85,9 +85,9 @@ export default function App() {
   useEffect(
     () => {
       console.log("Updating markers");
-      view == 0 ? addMarkers(results) : addMarkers(stops);
+      view === 0 ? addMarkers(results) : addMarkers(stops);
     },
-    view == 0 ? [results] : [stops]
+    view === 0 ? [results] : [stops]
   );
 
   // takes in an array of Data and plots them as markers on the map
@@ -116,7 +116,7 @@ export default function App() {
       // add click event to highlight corresponding Card element
       document.getElementById(newId).addEventListener("click", (e) => {
         const id = e.currentTarget.id.substring(6);
-        view == 0 ? selectResult(id) : selectStop(id);
+        view === 0 ? selectResult(id) : selectStop(id);
       });
     }
     setMarkers(newMarkers); // update markers state
