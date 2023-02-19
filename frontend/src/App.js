@@ -56,7 +56,7 @@ export default function App() {
 
   // initiate map upon first launch
   useEffect(() => {
-    // initialize map only once
+    if (map.current) return; // initialize map only once
     console.log("Initializing map");
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -69,7 +69,7 @@ export default function App() {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, []);
+  });
 
   // update map when user pans around
   useEffect(() => {
