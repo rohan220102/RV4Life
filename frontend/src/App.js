@@ -97,35 +97,40 @@ export default function App() {
   });
 
   // update markers depending on which tab view you're in
-  // useEffect(
-  //   () => {
-  //     console.log("Updating markers");
-  //     view === 0 ? addMarkers(results) : addMarkers(stops);
-  //   },
-  //   view === 0 ? [results] : [stops]
-  // );
+  useEffect(
+    () => {
+      console.log("Updating markers");
+      view === 0 ? addMarkers(results) : addMarkers(stops);
+    },
+    view === 0 ? [results] : [stops]
+  );
 
   // takes in an array of Data and plots them as markers on the map
-  const addMarkers = (results) => {
+  const addMarkers = (feat_collection) => {
+    const features = feat_collection.features;
     for (const marker of markers) marker.remove();
     const newMarkers = [];
 
-    for (const res of results) {
+    for (const feature of features) {
       // create new marker and add to map
       newMarkers.push(
         new mapboxgl.Marker({
-          color: res.selected ? colors.primary : colors.secondary,
+          color: feature.properties.selected
+            ? colors.primary
+            : colors.secondary,
         })
-          .setLngLat(res.coordinates)
+          .setLngLat(feature.geometry.coordinates)
           .setPopup(
             new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(`<h3>${res.title}</h3><p>${res.description}</p>`)
+              .setHTML(
+                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+              )
           )
           .addTo(map.current)
       );
 
       // create HTML id for each marker
-      const newId = "marker" + res.id;
+      const newId = "marker" + feature.properties.id;
       newMarkers[newMarkers.length - 1].getElement().id = newId;
 
       // add click event to highlight corresponding Card element
