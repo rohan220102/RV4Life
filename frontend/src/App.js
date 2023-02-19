@@ -69,6 +69,13 @@ export default function App() {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    map.current.on("load", () => {
+      map.current.addSource("places", {
+        type: "geojson",
+        data: "https://raw.githubusercontent.com/quynh16/quynh16.github.io/main/results.json",
+      });
+    });
   });
 
   // update map when user pans around
