@@ -6,8 +6,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import styled from "styled-components";
 
-// components
-import Search from "../search";
+// functions
+import Search from "../functions/search";
 
 // styles
 import "../css/dateInput.css";

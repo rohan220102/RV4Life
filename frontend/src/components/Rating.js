@@ -1,5 +1,8 @@
-import colors from "../colors.js";
+// libraries
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+
+// styles
+import colors from "../colors.js";
 import "../css/rating.css";
 
 // takes in a rating (float) and generates the ratings + stars display

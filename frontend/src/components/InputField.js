@@ -2,9 +2,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-// components
-import Search from "../search";
-import useInput from "./useInput";
+// functions
+import Search from "../functions/search";
+import useInput from "../functions/useInput";
 
 // styles
 import "../css/inputField.css";
