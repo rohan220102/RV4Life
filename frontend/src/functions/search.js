@@ -8,8 +8,8 @@ const search = (input, setResults, startContext) => {
   const lat = input.input.geometry.coordinates[1];
   const { start, setStart } = startContext;
 
-  // setStart(input.input.geometry.coordinates);
-  setStart([-77.068444, 38.909664]);
+  setStart(input.input.geometry.coordinates);
+  // setStart([-77.068444, 38.909664]);
 
   // fetch results from server
   const url = `${server}/api/search/?loc=${lon},${lat}`;

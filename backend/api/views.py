@@ -29,7 +29,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.038659, 38.931567]
+          "coordinates": [lon + 0.01, lat + 0.01]
         }
       },
       {
@@ -46,7 +46,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.003168, 38.894651]
+          "coordinates": [lon - 0.01, lat - 0.01]
         }
       },
       {
@@ -63,7 +63,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.090372, 38.881189]
+          "coordinates": [lon + 0.017, lat + 0.034]
         }
       },
       {
@@ -80,7 +80,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.111561, 38.882342]
+          "coordinates": [lon - 0.007, lat + 0.031]
         }
       },
       {
@@ -97,7 +97,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.052477, 38.943951]
+          "coordinates": [lon + 0.0812, lat - 0.0083]
         }
       },
       {
@@ -114,7 +114,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.043444, 38.909664]
+          "coordinates": [lon + 0.024, lat + 0.0124]
         }
       },
       {
@@ -131,7 +131,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.031706, 38.914581]
+          "coordinates": [lon + 0.012, lat - 0.014]
         }
       },
       {
@@ -148,7 +148,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.020945, 38.878241]
+          "coordinates": [lon - 0.0212, lat + 0.008523]
         }
       },
       {
@@ -165,7 +165,7 @@ def search(request):
         },
         "geometry": {
           "type": "Point",
-          "coordinates": [-77.007481, 38.876516]
+          "coordinates": [lon + 0.03, lat - 0.03]
         }
       }
     ]
