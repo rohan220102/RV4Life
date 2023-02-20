@@ -27,7 +27,7 @@ export default function App() {
   const [selected, setSelected] = useState();
   const [start, setStart] = useState(null);
 
-  console.log("Rendering application");
+  // console.log("Rendering application");
 
   // set a Data object as selected when a card/marker is clicked
   const selectResult = (id) => {
@@ -70,7 +70,7 @@ export default function App() {
   // initiate map upon first launch
   useEffect(() => {
     if (map.current) return; // initialize map only once
-    console.log("Initializing map");
+    // console.log("Initializing map");
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       projection: {
@@ -142,7 +142,7 @@ export default function App() {
   // update markers depending on which tab view you're in
   useEffect(
     () => {
-      console.log("Updating markers");
+      // console.log("Updating markers");
       view === 0 ? addMarkers(results) : addMarkers(stops);
     },
     view === 0 ? [results] : [stops]

@@ -34,7 +34,7 @@ const InputField = ({
   // callback for "ENTER" on input field
   const onEnter = (e) => {
     if (e.type === "keydown" && e.key === "Enter" && input.value !== "") {
-      console.log(input.suggestions[0]);
+      // console.log(input.suggestions[0]);
       if (input.suggestions[0] !== undefined) submit(e, input.suggestions[0]);
     }
   };

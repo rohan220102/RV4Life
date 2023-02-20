@@ -59,7 +59,7 @@ export default function DateInput({ userInput, setUserInput, setResults }) {
           }}
           onAccept={(newValue) => onSelect(newValue)}
           renderInput={({ inputRef, inputProps, InputProps }) => {
-            console.log("Rendering input" + inputProps.value);
+            // console.log("Rendering input" + inputProps.value);
             return (
               <Box tabIndex={-1} sx={{ display: "flex", alignItems: "center" }}>
                 <Input

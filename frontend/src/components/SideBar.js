@@ -24,7 +24,7 @@ export default function Sidebar({
   view,
   setView,
 }) {
-  console.log("Rendering sidebar");
+  // console.log("Rendering sidebar");
   const [message, setMessage] = useState("");
   const [userInput, setUserInput] = useState({ input: {}, date: null });
 
