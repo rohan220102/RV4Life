@@ -1,22 +1,17 @@
-from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+@api_view(['GET'])
 def search(request):
-    loc = request.GET.get('loc', 0)
-    lat, lon = map(str.strip, loc.split(','))
-    lat, long = float(lat), float(lon)
-    
-    if not ((-90 <= lat <= 90) and (-180 <= long <= 180)):
-      data = {"Error": "Invalid coordinates"}
-    else:
-      data = {"Lat": lat, "Long": long}
+  loc = request.GET.get('loc', "0,0")
+  lon, lat = map(str.strip, loc.split(','))
+  lon, lat = float(lon), float(lat)
+  
+  # if not ((-90 <= lat <= 90) and (-180 <= lon <= 180)):
+  #   data = {"Error": "Invalid coordinates"}
+  # else:
+  #   data = {"Lat": lat, "Lon": lon}
 
-    date = request.GET.get('date')
-    
-    return JsonResponse(data)
-
-# Create your views here.
-def get_suggestions(request):
   data = {
     "type": "FeatureCollection",
     "features": [
@@ -175,5 +170,9 @@ def get_suggestions(request):
       }
     ]
   }
-  return JsonResponse(data)
 
+  date = request.GET.get('date')
+  return Response(data)
+
+  
+  
