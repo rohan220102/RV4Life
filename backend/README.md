@@ -24,13 +24,13 @@ Clone down this repository. You will need `pipenv` and the latest version of Pyt
 
 #### Before executing the following steps, cd INTO the backend/ directory.
 
+To Install Dependencies:
+
+`pipenv install`
+
 To activate the virtual environment:
 
 `pipenv shell`
-
-To Install Dependencies:
-
-`pip install -r requirements/local.txt`
 
 To Start Server (default port = 8000):
 
