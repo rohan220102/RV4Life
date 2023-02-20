@@ -25,7 +25,7 @@ To Install Dependencies:
 
 `npm install`
 
-To Start Server:
+To Start Server (default port = 3000):
 
 `npm start`
 

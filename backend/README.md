@@ -1,1 +1,53 @@
-# RVLife Planner (Backend)
+## RVLife Planner (Frontend)
+
+#### Description:
+
+This is application is intended to help RV travelers plan their trips, one stop at a time.
+
+## Project Status
+
+This project is currently in development. Users can navigate around the map (via the MapBox API) as well as type in their start destinations. Functionality of the machine learning model is still in progress.
+
+## Project Screen Shots
+
+![Image of landing page](../img/screenshot1.png)
+![Image showing search result functionality](../img/screenshot2.png)
+
+## Installation and Setup Instructions
+
+Clone down this repository. You will need `pipenv` and the latest version of Python installed globally on your machine.
+
+`git clone git@github.com/quynh16/RVLife.git`
+`cd RVLife/backend/`
+
+### !!! IMPORTANT !!!
+
+#### Before executing the following steps, cd INTO the backend/ directory.
+
+To activate the virtual environment:
+
+`pipenv shell`
+
+To Install Dependencies:
+
+`pip install -r requirements/local.txt`
+
+To Start Server (default port = 8000):
+
+`python3 manage.py runserver`
+
+To Visit App:
+
+`localhost:3000`
+
+## Usage
+
+Enter any destination you wish to start your trip from, and select a suggested location that best aligns with your intended start point.
+
+From there, a list of suggested next destinations should appear below the "View" toggle button. Select any of the suggested destinations from either the list or the map to view more about it.
+
+Choose one option among the list of suggested next destinations to add the stop to your current trip. After doing so, a new list of next destinations will be suggested based on where your most recent stop is.
+
+You can view information about your current trip, such as the stops and total duration, by toggling the "View" button.
+
+Repeat this process with as many stops as you would like until you are satisifed with your trip.
