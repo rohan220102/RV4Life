@@ -27,6 +27,6 @@ body {
   position: relative;
 }
 
-body {
-  scroll-behavior: smooth !important;
+.mapboxgl-marker {
+  cursor: pointer;
 }

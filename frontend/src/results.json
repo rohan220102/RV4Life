@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "id": 0,
-        "title": "UC Berkeley",
+        "title": "Boston RV Camp",
         "description": "San Francisco, California",
         "selected": false,
         "rating": "5.0",
@@ -39,7 +39,7 @@
       "type": "Feature",
       "properties": {
         "id": 2,
-        "title": "Bear Woods Campgrounds",
+        "title": "Treetops RV Resort",
         "description": "Washington, D.C.",
         "selected": false,
         "rating": "4.9",
@@ -73,7 +73,7 @@
       "type": "Feature",
       "properties": {
         "id": 4,
-        "title": "Bear Woods Campgrounds",
+        "title": "Loyd Park",
         "description": "Washington, D.C.",
         "selected": false,
         "rating": "4.9",
@@ -90,7 +90,7 @@
       "type": "Feature",
       "properties": {
         "id": 5,
-        "title": "Good Luck RV Park",
+        "title": "Normandy Farms Campground",
         "description": "Washington, D.C.",
         "selected": false,
         "rating": "4.9",
@@ -124,7 +124,7 @@
       "type": "Feature",
       "properties": {
         "id": 7,
-        "title": "Bear Woods Campgrounds",
+        "title": "Boston Trailer Park",
         "description": "Washington, D.C.",
         "selected": false,
         "rating": "4.9",
@@ -141,7 +141,7 @@
       "type": "Feature",
       "properties": {
         "id": 8,
-        "title": "Good Luck RV Park",
+        "title": "Hanscom AFB FamCamp",
         "description": "Washington, D.C.",
         "selected": false,
         "rating": "4.9",
