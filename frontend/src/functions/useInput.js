@@ -15,7 +15,7 @@ const useInput = (initialValue) => {
       const json = await response.json();
       if (json) setSuggestions(json?.features);
     } catch (error) {
-      console.log("Error fetching data, ", error);
+      console.log("Error getting suggestions:", error);
     }
   };
 

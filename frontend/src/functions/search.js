@@ -8,17 +8,37 @@ const search = (input, setResults, startContext) => {
   const lat = input.input.geometry.coordinates[1];
   const { start, setStart } = startContext;
 
-  setStart(input.input.geometry.coordinates);
-  // setStart([-77.068444, 38.909664]);
+  const url = `${server}/api/search/?loc=${lon},${lat}`;
 
   // fetch results from server
-  const url = `${server}/api/search/?loc=${lon},${lat}`;
+  // try {
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setResults(json);
+  //       console.log("Fetched data from server:");
+  //       console.log(json);
+  //     });
+  //   setStart(input.input.geometry.coordinates);
+  // } catch (error) {
+  //   console.log("Error searching for next stops, ", error);
+  // }
+
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Something went wrong");
+    })
     .then((json) => {
       setResults(json);
       console.log("Fetched data from server:");
       console.log(json);
+      setStart(input.input.geometry.coordinates);
+    })
+    .catch((error) => {
+      console.log("Error fetching next stops:", error);
     });
 };
 
