@@ -30,3 +30,8 @@ body {
 .mapboxgl-marker {
   cursor: pointer;
 }
+
+.mapboxgl-popup-content {
+  padding: 10px;
+  text-align: center;
+}

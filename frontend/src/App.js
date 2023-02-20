@@ -165,9 +165,13 @@ export default function App() {
         })
           .setLngLat(feature.geometry.coordinates)
           .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
+            new mapboxgl.Popup({
+              offset: 25,
+              closeOnClick: false,
+              closeButton: false,
+            }) // add popups
               .setHTML(
-                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                `<h3 style="margin: 0;">${feature.properties.title}</h3>`
               )
           )
           .addTo(map.current)
@@ -176,7 +180,8 @@ export default function App() {
       // create HTML id for each marker
       const newId = "marker" + feature.properties.id;
       newMarkers[newMarkers.length - 1].getElement().id = newId;
-
+      if (feature.properties.selected)
+        newMarkers[newMarkers.length - 1].togglePopup();
       // add click event to highlight corresponding Card element
       document.getElementById(newId).addEventListener("click", (e) => {
         const id = feature.properties.id;
