@@ -1,8 +1,19 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 
-def say_hello(request):
-  return HttpResponse("Hello World")
+def search(request):
+    loc = request.GET.get('loc', 0)
+    lat, lon = map(str.strip, loc.split(','))
+    lat, long = float(lat), float(lon)
+    
+    if not ((-90 <= lat <= 90) and (-180 <= long <= 180)):
+      data = {"Error": "Invalid coordinates"}
+    else:
+      data = {"Lat": lat, "Long": long}
+
+    date = request.GET.get('date')
+    
+    return JsonResponse(data)
 
 # Create your views here.
 def get_suggestions(request):
