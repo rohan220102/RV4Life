@@ -1,10 +1,11 @@
 // libraries
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 
 // functions
 import Search from "../functions/search";
 import useInput from "../functions/useInput";
+import { StartContext } from "../App";
 
 // styles
 import "../css/inputField.css";
@@ -20,6 +21,7 @@ const InputField = ({
 }) => {
   const input = useInput(""); // used to track current input field value
   const [focused, setFocused] = useState(false);
+  const startContext = useContext(StartContext);
 
   /***************** Event Callbacks *****************/
 
@@ -54,7 +56,7 @@ const InputField = ({
     const newUserInput = { input: suggestion, date: date };
     setUserInput(newUserInput); // update state
 
-    Search(newUserInput, setResults); // fetch results
+    Search(newUserInput, setResults, startContext); // fetch results
 
     // update input field to reflect selection
     input.setValue(suggestion.place_name);

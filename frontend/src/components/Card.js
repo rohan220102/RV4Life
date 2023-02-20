@@ -25,6 +25,7 @@ const Card = ({
 
   return (
     <div
+      id={"card" + id}
       className={isSelected(selected)}
       onClick={() => onSelect(id)}
       onMouseEnter={() => setShowAddBtn(true)}

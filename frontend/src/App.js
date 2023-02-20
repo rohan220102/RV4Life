@@ -11,6 +11,8 @@ import colors from "./colors.js";
 mapboxgl.accessToken =
   "pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig";
 
+export const StartContext = React.createContext();
+
 export default function App() {
   // state data for cards and markers
   const [results, setResults] = useState({
@@ -22,6 +24,8 @@ export default function App() {
     features: [],
   });
   const [view, setView] = useState(0); //
+  const [selected, setSelected] = useState();
+  const [start, setStart] = useState(null);
 
   console.log("Rendering application");
 
@@ -36,7 +40,7 @@ export default function App() {
           : { ...feat, properties: { ...feat.properties, selected: false } }
       ),
     });
-    flyTo(results.features.find((x) => x.properties.id == id));
+    setSelected(id);
   };
 
   // set a Data object as selected when a card/marker is clicked
@@ -50,7 +54,6 @@ export default function App() {
           : { ...feat, properties: { ...feat.properties, selected: false } }
       ),
     });
-    flyTo(stops.features.find((x) => x.properties.id == id));
   };
 
   /*********************** MapBox ***********************/
@@ -74,7 +77,7 @@ export default function App() {
         name: "mercator",
         parallels: [55, 65],
       },
-      maxZoom: 13,
+      minZoom: 2,
       style: "mapbox://styles/quynh16/cldjj7h73001m01rnw8y30hhm",
       center: [lng, lat],
       zoom: zoom,
@@ -87,6 +90,27 @@ export default function App() {
       });
     });
   });
+
+  // scroll card into center when selected
+  useEffect(() => {
+    if (selected) {
+      const card_id = "card" + selected;
+      document.getElementById(card_id).scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [selected]);
+
+  // centers the map on the currentFeature
+  useEffect(() => {
+    if (!start) return;
+    map.current.flyTo({
+      center: start,
+      zoom: 12,
+    });
+  }, [start]);
 
   // update map when user pans around
   useEffect(() => {
@@ -144,31 +168,24 @@ export default function App() {
     setMarkers(newMarkers); // update markers state
   };
 
-  // centers the map on the currentFeature
-  function flyTo(currentFeature) {
-    if (!map.current) return;
-    map.current.flyTo({
-      center: currentFeature.geometry.coordinates,
-      zoom: 15,
-    });
-  }
-
   /********************** Render ***********************/
 
   return (
     <div className="App" id={"app-container"}>
-      <SideBar
-        pageWrapId={"page-wrap"}
-        outerContainerId={"app-container"}
-        results={results}
-        setResults={setResults}
-        selectResult={selectResult}
-        stops={stops}
-        setStops={setStops}
-        selectStop={selectStop}
-        view={view}
-        setView={setView}
-      />
+      <StartContext.Provider value={{ start: start, setStart: setStart }}>
+        <SideBar
+          pageWrapId={"page-wrap"}
+          outerContainerId={"app-container"}
+          results={results}
+          setResults={setResults}
+          selectResult={selectResult}
+          stops={stops}
+          setStops={setStops}
+          selectStop={selectStop}
+          view={view}
+          setView={setView}
+        />
+      </StartContext.Provider>
       <div ref={mapContainer} className="map-container" />
     </div>
   );

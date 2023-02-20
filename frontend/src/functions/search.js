@@ -5,9 +5,11 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoicXV5bmgxNiIsImEiOiJjbGI3anljd2QwYno1M3ZtcjhmeWwxNzk0In0.F6D6mGrZ1-0tjVTDPiMgig";
 
 // this function should fetch and maybe process the results
-export default function search(input, setResults) {
-  // console.log(input);
-
+export default function search(input, setResults, startContext) {
+  console.log(input);
+  const { start, setStart } = startContext;
+  // setStart(input.input.geometry.coordinates);
+  setStart([-77.043444, 38.909664]);
   // const results = getResults(input);
   // const results = JSON.parse(res);
   fetch(

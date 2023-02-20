@@ -26,3 +26,7 @@ body {
 #app-container {
   position: relative;
 }
+
+body {
+  scroll-behavior: smooth !important;
+}
