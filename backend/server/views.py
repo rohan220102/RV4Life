@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+
+def say_hello(request):
+  return HttpResponse("Hello World")
 
 # Create your views here.
 def get_suggestions(request):
@@ -12,7 +15,7 @@ def get_suggestions(request):
           "id": 0,
           "title": "Boston RV Camp",
           "description": "San Francisco, California",
-          "selected": false,
+          "selected": False,
           "rating": "5.0",
           "detour": "6 min.",
           "visited": "251",
@@ -29,7 +32,7 @@ def get_suggestions(request):
           "id": 1,
           "title": "Bear Woods Campgrounds",
           "description": "San Francisco, California",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -46,7 +49,7 @@ def get_suggestions(request):
           "id": 2,
           "title": "Treetops RV Resort",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -63,7 +66,7 @@ def get_suggestions(request):
           "id": 3,
           "title": "Lakeridge Campgrounds and RV Park",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -80,7 +83,7 @@ def get_suggestions(request):
           "id": 4,
           "title": "Loyd Park",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -97,7 +100,7 @@ def get_suggestions(request):
           "id": 5,
           "title": "Normandy Farms Campground",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -114,7 +117,7 @@ def get_suggestions(request):
           "id": 6,
           "title": "Lakeridge Campgrounds and RV Park",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -131,7 +134,7 @@ def get_suggestions(request):
           "id": 7,
           "title": "Boston Trailer Park",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
@@ -148,7 +151,7 @@ def get_suggestions(request):
           "id": 8,
           "title": "Hanscom AFB FamCamp",
           "description": "Washington, D.C.",
-          "selected": false,
+          "selected": False,
           "rating": "4.9",
           "detour": "6 min.",
           "visited": "251",
