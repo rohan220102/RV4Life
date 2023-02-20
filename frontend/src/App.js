@@ -122,6 +122,24 @@ export default function App() {
     });
   });
 
+  useEffect(() => {
+    view === 0
+      ? setResults({
+          ...results,
+          features: results.features.map((feat) => ({
+            ...feat,
+            properties: { ...feat.properties, selected: false },
+          })),
+        })
+      : setStops({
+          ...stops,
+          features: stops.features.map((feat) => ({
+            ...feat,
+            properties: { ...feat.properties, selected: false },
+          })),
+        });
+  }, [view]);
+
   // update markers depending on which tab view you're in
   useEffect(
     () => {
