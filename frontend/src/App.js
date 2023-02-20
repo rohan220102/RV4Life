@@ -36,6 +36,7 @@ export default function App() {
           : { ...feat, properties: { ...feat.properties, selected: false } }
       ),
     });
+    flyTo(results.features.find((x) => x.properties.id == id));
   };
 
   // set a Data object as selected when a card/marker is clicked
@@ -49,6 +50,7 @@ export default function App() {
           : { ...feat, properties: { ...feat.properties, selected: false } }
       ),
     });
+    flyTo(stops.features.find((x) => x.properties.id == id));
   };
 
   /*********************** MapBox ***********************/
@@ -135,12 +137,21 @@ export default function App() {
 
       // add click event to highlight corresponding Card element
       document.getElementById(newId).addEventListener("click", (e) => {
-        const id = e.currentTarget.id.substring(6);
+        const id = feature.properties.id;
         view === 0 ? selectResult(id) : selectStop(id);
       });
     }
     setMarkers(newMarkers); // update markers state
   };
+
+  // centers the map on the currentFeature
+  function flyTo(currentFeature) {
+    if (!map.current) return;
+    map.current.flyTo({
+      center: currentFeature.geometry.coordinates,
+      zoom: 15,
+    });
+  }
 
   /********************** Render ***********************/
 
