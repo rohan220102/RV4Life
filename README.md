@@ -15,7 +15,7 @@ This project is currently in development. Users can navigate around the map (via
 
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+Clone down this repository. You will need `node`, `npm`, Python, and `pipenv` installed globally on your machine.
 
 ### !!! IMPORTANT !!!
 

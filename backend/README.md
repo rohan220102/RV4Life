@@ -34,11 +34,11 @@ To activate the virtual environment:
 
 To Start Server (default port = 8000):
 
-`python3 manage.py runserver`
+`python manage.py runserver`
 
-To Visit App:
+To Visit Backend API Endpoint:
 
-`localhost:3000`
+`localhost:3000/api/?loc=${lon},${lat}`
 
 ## Usage
 
