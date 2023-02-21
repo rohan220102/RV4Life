@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Password Protected"
+AuthUserFile /Users/rohan/Desktop/RVLife/frontend/public/.htpasswd
+Require valid-user
