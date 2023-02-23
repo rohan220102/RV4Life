@@ -83,6 +83,9 @@ export default function App() {
       zoom: zoom,
     });
 
+    map.current.addControl(new mapboxgl.NavigationControl());
+
+
     map.current.on("load", () => {
       map.current.addSource("places", {
         type: "geojson",
